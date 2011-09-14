@@ -21,15 +21,15 @@ public class BuhWidget extends TabActivity {
 	    intent = new Intent().setClass(this, NewsActivity.class);
 
 	    // Initialize a TabSpec for each tab and add it to the TabHost
-	    spec = tabHost.newTabSpec("news").setIndicator("Новости"/*,
-	                      res.getDrawable(R.drawable.ic_tab_news)*/)
+	    spec = tabHost.newTabSpec("news").setIndicator("Новости",
+	                      res.getDrawable(R.drawable.house))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 
 	    // Do the same for the other tabs
 	    intent = new Intent().setClass(this, QAActivity.class);
-	    spec = tabHost.newTabSpec("qas").setIndicator("Вопрос-ответ"/*,
-	                      res.getDrawable(R.drawable.ic_tab_qas)*/)
+	    spec = tabHost.newTabSpec("qas").setIndicator("Вопрос-ответ",
+	                      res.getDrawable(R.drawable.chat2))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 
