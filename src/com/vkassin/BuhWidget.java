@@ -1,16 +1,26 @@
 package com.vkassin;
 
+import org.json.JSONObject;
+
+import com.vkassin.Common.ApiException;
+
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TabHost;
 
 public class BuhWidget extends TabActivity {
 
+	private static final String TAG = "aBuh.BuhWidget"; 
+	
 	public void onCreate(Bundle savedInstanceState) {
+		
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.main);
+
+        Common.prepareUserAgent(this);
 
 	    Resources res = getResources(); // Resource object to get Drawables
 	    TabHost tabHost = getTabHost();  // The activity TabHost
@@ -35,4 +45,11 @@ public class BuhWidget extends TabActivity {
 
 	    tabHost.setCurrentTab(0);
 	}
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+//        Common.prepareUserAgent(this);
+    }
 }
