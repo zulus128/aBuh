@@ -19,8 +19,19 @@ public final class R {
         public static final int redo=0x7f020005;
         public static final int star=0x7f020006;
     }
+    public static final class id {
+        public static final int LinearLayout03=0x7f050001;
+        public static final int NewsList=0x7f050002;
+        public static final int TextView01=0x7f050004;
+        public static final int icon=0x7f050003;
+        public static final int label=0x7f050005;
+        public static final int textView1=0x7f050000;
+    }
     public static final class layout {
         public static final int main=0x7f030000;
+        public static final int news=0x7f030001;
+        public static final int newsitem=0x7f030002;
+        public static final int qalayout=0x7f030003;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
