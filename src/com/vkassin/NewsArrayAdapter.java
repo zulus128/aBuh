@@ -34,11 +34,8 @@ public class NewsArrayAdapter extends ArrayAdapter<RSSItem> {
     		TextView title = (TextView) layout.findViewById(R.id.NewsTitleTextView);
     		TextView date = (TextView) layout.findViewById(R.id.NewsDateTextView);
     		
-    		String newsFrom = "";
-    		
-    		
     		title.setText(item.getShortTitle());
-    		date.setText(DateFormat.format("yyyy-MM-dd", item.getPubDate()) + ", " + newsFrom);
+    		date.setText(DateFormat.format("yyyy-MM-dd", item.getPubDate()));
     	}
     	
     	return layout;

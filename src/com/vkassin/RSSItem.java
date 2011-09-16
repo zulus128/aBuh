@@ -8,10 +8,12 @@ public class RSSItem {
 	public String title;
 	public String description;
 	public Date pubDate;
+	public String fulltext;
 	
 	public RSSItem() {
 		this.title = "";
 		this.description = "";
+		this.fulltext = "";
 		this.pubDate = new Date(Date.UTC(110, 0, 0, 0, 0, 0));
 	}
 		

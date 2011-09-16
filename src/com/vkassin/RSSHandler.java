@@ -1,5 +1,6 @@
 package com.vkassin;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -18,8 +19,8 @@ public class RSSHandler extends DefaultHandler {
 	private ArrayList<RSSItem> parsedDate = new ArrayList<RSSItem>();
 	
 	// Used to define what elements we are currently in
- /*   private boolean inItem = false;
-    private boolean inTitle = false;
+    private boolean inItem = false;
+ /*   private boolean inTitle = false;
     private boolean inDescription = false;
     private boolean inPubDate = false;
     private boolean inLink = false;
@@ -36,6 +37,7 @@ public class RSSHandler extends DefaultHandler {
         
     @Override
     public void startDocument() throws SAXException {
+    	
     } 
     
     @Override
@@ -45,10 +47,12 @@ public class RSSHandler extends DefaultHandler {
     @Override
     public void startElement(String namespaceURI, String localName, String qName, Attributes atts) throws SAXException {
     	
+    	//Log.w(TAG, "startElement: " + localName.trim());
+    	
     	if(localName.trim().equals(Common.ITEM_TAG)) {
-//    		inItem = true;
+    		inItem = true;
     		currentItem = new RSSItem();
-    		Log.w(TAG, "Item created");
+    		//Log.w(TAG, "Item created");
     	}
     	else if(localName.trim().equals(Common.IMAGE_TAG)) {
     		//try {
@@ -62,30 +66,43 @@ public class RSSHandler extends DefaultHandler {
     @Override
     public void characters(char ch[], int start, int length) {
     	
-    	String str = (new String(ch).substring(start, start + length));
+    	String str = new String(ch).substring(start, start + length);
+    	
+    	//Log.i(TAG, "str = " + str.trim());
         		
-    	sb.append(str);
+    	sb.append(str.trim());
 
     }
     
     @Override
     public void endElement(String namespaceURI, String localName, String qName) throws SAXException {
     	
-		Log.w(TAG, "endElement: " + sb.toString());
+		String ss = sb.toString();
+    	//Log.w(TAG, "endElement: " + localName.trim() + " sb: " + ss);
 
-    	if(localName.trim().equals(Common.ITEM_TAG))
-    		parsedDate.add(currentItem);
+    	if(localName.trim().equals(Common.ITEM_TAG)) {
+    		
+    		if(inItem)
+    			parsedDate.add(currentItem);
+    			
+    		inItem = false;
+    	}
     	else
-    		if(localName.trim().equals(Common.TITLE_TAG))
-    			currentItem.title = new String(sb);
+    		if(localName.trim().equals(Common.TITLE_TAG)){
+    			if(inItem)
+    				currentItem.title = ss;
+    		}
     		else
-    			if(localName.trim().equals(Common.DESCRIPTION_TAG))     		
-    				currentItem.description = new String(sb);
+    			if(localName.trim().equals(Common.DESCRIPTION_TAG)) {     		
+    				if(inItem)
+    					currentItem.description = ss;
+    			}
     			else
 					if(localName.trim().equals(Common.DATE_TAG)) {
 			       		try {
-		        			currentItem.pubDate = new Date(Date.parse(new String(sb)));
+		        			currentItem.pubDate = new Date(Date.parse(ss));
 		        		} catch (Exception e) {
+		        			//Log.e(TAG, "Can't convert date");
 		        			currentItem.pubDate = new Date(Date.UTC(110, 0, 0, 0, 0, 0));
 		        		}
 					}
@@ -93,5 +110,6 @@ public class RSSHandler extends DefaultHandler {
     		    	
     	sb = new StringBuilder();
     }
+    
 }
 

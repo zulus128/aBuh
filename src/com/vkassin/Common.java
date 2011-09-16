@@ -5,6 +5,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -39,6 +41,7 @@ public class Common {
 	
 	public static final String MENU_URL_FOR_REACH = "www.buhgalteria.ru";
 	public static final String MENU_URL = "http://www.buhgalteria.ru/rss/iphoneapp/iphonenews.php";
+//	public static final String MENU_URL = "http://avtofon.com/sheet/xmlprice";
 	public static final String TOPMENU_URL = "http://www.buhgalteria.ru/rss/iphoneapp/iphoneday.php";
 	public static final String QAMENU_URL = "http://www.buhgalteria.ru/rss/iphoneapp/iphonefaq.php";
 	public static final String SENDQ_URL = "http://www.buhgalteria.ru/addq/iphone.php";
@@ -158,6 +161,8 @@ public class Common {
 			HttpURLConnection urlc = (HttpURLConnection) url.openConnection();
 	        urlc.setRequestProperty("User-Agent", "Android Application: aBuh");
 	        urlc.setRequestProperty("Connection", "close");
+	        urlc.setRequestProperty("Accept-Charset", "windows-1251");
+			
 	        urlc.setConnectTimeout(1000 * 5); // mTimeout is in seconds
 	        urlc.setDoInput(true);
 	        urlc.connect();
@@ -176,14 +181,17 @@ public class Common {
 				// Parse the XML-data from our URL.
 				InputStream is = urlc.getInputStream();
                 BufferedInputStream bis = new BufferedInputStream(is);
-                ByteArrayBuffer baf = new ByteArrayBuffer(50);
+                ByteArrayBuffer baf = new ByteArrayBuffer(500);
                 int current = 0;
                 while ((current = bis.read()) != -1) {
                         baf.append((byte) current);
                 }
                 ByteArrayInputStream bais = new ByteArrayInputStream(baf.toByteArray());
-                //Log.i(TAG, new String(baf.toByteArray()));
-				xr.parse(new InputSource(bais));
+                Reader isr = new InputStreamReader(bais, "windows-1251");
+                InputSource ist = new InputSource();
+                //ist.setEncoding("UTF-8");
+                ist.setCharacterStream(isr);
+				xr.parse(ist);
 				// Parsing has finished.
 				
 				bis.close();

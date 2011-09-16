@@ -1,5 +1,6 @@
 package com.vkassin;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import com.vkassin.Common.ApiException;
 import android.app.Activity;
@@ -32,7 +33,7 @@ public class NewsActivity extends Activity {
         //refresh();
         
         setContentView(R.layout.news);
-      
+        
         list = (ListView)this.findViewById(R.id.NewsList);
         
     	adapter = new NewsArrayAdapter(this, R.layout.newsitem, new ArrayList<RSSItem>());
