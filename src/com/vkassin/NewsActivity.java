@@ -38,25 +38,23 @@ public class NewsActivity extends Activity {
         
     	adapter = new NewsArrayAdapter(this, R.layout.newsitem, new ArrayList<RSSItem>());
     	list.setAdapter(adapter);
-    	/*ArrayList<RSSItem> r = new ArrayList<RSSItem>();
-    	for(int i = 0; i < 15; i++)
-    		r.add(new RSSItem());
-    	adapter.addItems(r);
-    	*/
+    	
     	list.setOnItemClickListener(new OnItemClickListener() {
 			
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				
-		//		Toast toast = new Toast(this);
-		//		toast.setText("You clicked");
-		//		toast.show();
+				Intent i = new Intent(NewsActivity.this, NewsDetail.class);
+				RSSItem it = adapter.getItems().get(arg2);
+				i.putExtra("rssitem", it);
+				startActivity(i);
+				//Log.i(TAG, "row: "+arg2+" arg3: "+arg3);
 			}
 		});
     	
     	new getRSS().execute();
     }
     
-	private void refresh() {
+/*	private void refresh() {
 		
 		String cont = "no content!";
 		try {
@@ -68,7 +66,7 @@ public class NewsActivity extends Activity {
 		
 		Log.i(TAG, cont);
 	}
-
+*/
     private class getRSS extends AsyncTask<Context, Integer, ArrayList<RSSItem>> {
 
     	@Override

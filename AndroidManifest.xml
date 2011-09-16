@@ -17,6 +17,7 @@
 
     <activity android:name=".NewsActivity"></activity>
 <activity android:name=".QAActivity"></activity>
+<activity android:name=".NewsDetail"></activity>
 </application>
 
 

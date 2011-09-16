@@ -1,8 +1,14 @@
 package com.vkassin;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class RSSItem {
+public class RSSItem implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2L;
+
 	public static final int MAX_ITEMS = 30;
 	
 	public String title;

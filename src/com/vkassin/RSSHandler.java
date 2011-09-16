@@ -1,15 +1,11 @@
 package com.vkassin;
 
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Date;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
 import android.util.Log;
-
 import com.vkassin.RSSItem;
 
 public class RSSHandler extends DefaultHandler {
@@ -102,10 +98,13 @@ public class RSSHandler extends DefaultHandler {
 			       		try {
 		        			currentItem.pubDate = new Date(Date.parse(ss));
 		        		} catch (Exception e) {
-		        			//Log.e(TAG, "Can't convert date");
+		        			Log.e(TAG, "Can't convert date: " + ss);
 		        			currentItem.pubDate = new Date(Date.UTC(110, 0, 0, 0, 0, 0));
 		        		}
 					}
+					else
+						if(localName.trim().equals(Common.FULLTEXT_TAG))
+	    					currentItem.fulltext = ss;
 
     		    	
     	sb = new StringBuilder();
