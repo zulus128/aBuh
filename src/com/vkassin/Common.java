@@ -1,8 +1,18 @@
 package com.vkassin;
 
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -10,12 +20,18 @@ import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.ByteArrayBuffer;
+import org.xml.sax.ContentHandler;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.util.Log;
+
 
 public class Common {
 
@@ -118,4 +134,78 @@ public class Common {
         }
     }
 
+	public static ArrayList<RSSItem> getNews() {
+		
+		RSSHandler handler = new RSSHandler();
+//		handler.SetArticleLimit(5);
+//		handler.SetOffset(offset);
+		
+		String errorMsg = generalWebServiceCall(MENU_URL, handler);
+		
+		if(errorMsg.length() > 0)
+			Log.e(TAG, errorMsg);
+		
+		return handler.getParsedData();
+	}
+	
+	private static String generalWebServiceCall(String urlStr, ContentHandler handler) {
+		
+		String errorMsg = "";
+		
+		try {
+			URL url = new URL(urlStr);
+			
+			HttpURLConnection urlc = (HttpURLConnection) url.openConnection();
+	        urlc.setRequestProperty("User-Agent", "Android Application: aBuh");
+	        urlc.setRequestProperty("Connection", "close");
+	        urlc.setConnectTimeout(1000 * 5); // mTimeout is in seconds
+	        urlc.setDoInput(true);
+	        urlc.connect();
+	        
+	        if(urlc.getResponseCode() == HttpURLConnection.HTTP_OK) {
+				// Get a SAXParser from the SAXPArserFactory.
+				SAXParserFactory spf = SAXParserFactory.newInstance();
+				SAXParser sp = spf.newSAXParser();
+	
+				// Get the XMLReader of the SAXParser we created.
+				XMLReader xr = sp.getXMLReader();
+				
+				// Apply the handler to the XML-Reader
+				xr.setContentHandler(handler);
+	
+				// Parse the XML-data from our URL.
+				InputStream is = urlc.getInputStream();
+                BufferedInputStream bis = new BufferedInputStream(is);
+                ByteArrayBuffer baf = new ByteArrayBuffer(50);
+                int current = 0;
+                while ((current = bis.read()) != -1) {
+                        baf.append((byte) current);
+                }
+                ByteArrayInputStream bais = new ByteArrayInputStream(baf.toByteArray());
+                //Log.i(TAG, new String(baf.toByteArray()));
+				xr.parse(new InputSource(bais));
+				// Parsing has finished.
+				
+				bis.close();
+				baf.clear();
+				bais.close();
+				is.close();
+	        }
+	        
+	        urlc.disconnect();
+			
+		} catch (SAXException e) {
+			// All is OK :)
+		} catch (MalformedURLException e) {
+			Log.e(TAG, errorMsg = "MalformedURLException");
+		} catch (IOException e) {
+			Log.e(TAG, errorMsg = "IOException");
+		} catch (ParserConfigurationException e) {
+			Log.e(TAG, errorMsg = "ParserConfigurationException");
+		} catch (ArrayIndexOutOfBoundsException e) {
+			Log.e(TAG, errorMsg = "ArrayIndexOutOfBoundsException");
+		}
+		
+		return errorMsg;
+	}
 }

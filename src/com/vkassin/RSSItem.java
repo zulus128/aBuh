@@ -14,23 +14,7 @@ public class RSSItem {
 		this.description = "";
 		this.pubDate = new Date(Date.UTC(110, 0, 0, 0, 0, 0));
 	}
-	
-	public RSSItem(String title, String description, String pubDate) {
-		this.title = title;
-		this.description = description;
-		this.pubDate = new Date(Date.parse(pubDate));
-	}
-	
-	public RSSItem(String title, String description, Date pubDate) {
-		this.title = title;
-		this.description = description;
-		this.pubDate = pubDate;
-	}
-	
-	public String getMicroBlogContent() {
-		return title.length() > 70 ? title.substring(0, 67) + "..." : title;
-	}
-	
+		
 	public String getShortTitle() {
 		return title.length() > 48 ? title.substring(0, 45) + "..." : title;
 	}
