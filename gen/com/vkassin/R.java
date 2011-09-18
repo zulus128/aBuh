@@ -11,31 +11,33 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int chat2=0x7f020000;
-        public static final int gear=0x7f020001;
-        public static final int house=0x7f020002;
-        public static final int icon=0x7f020003;
-        public static final int note=0x7f020004;
-        public static final int redo=0x7f020005;
-        public static final int star=0x7f020006;
+        public static final int arrow=0x7f020000;
+        public static final int chat2=0x7f020001;
+        public static final int gear=0x7f020002;
+        public static final int house=0x7f020003;
+        public static final int icon=0x7f020004;
+        public static final int note=0x7f020005;
+        public static final int redo=0x7f020006;
+        public static final int star=0x7f020007;
     }
     public static final class id {
-        public static final int ItemThumb=0x7f05000b;
         public static final int LinearLayout01=0x7f05000c;
         public static final int LinearLayout03=0x7f050001;
         public static final int NewsDate=0x7f050009;
-        public static final int NewsDateTextView=0x7f05000d;
+        public static final int NewsDateTextView=0x7f05000b;
         public static final int NewsItem=0x7f050006;
         public static final int NewsList=0x7f050002;
+        public static final int NewsRubricTextView=0x7f05000f;
         public static final int NewsTitle=0x7f050007;
-        public static final int NewsTitleTextView=0x7f05000e;
+        public static final int NewsTitleTextView=0x7f05000d;
         public static final int NewsWebLinearLayout=0x7f05000a;
         public static final int NewsWrapper=0x7f050003;
         public static final int ScrollView01=0x7f050005;
         public static final int TextView01=0x7f050008;
         public static final int TopNews=0x7f050004;
-        public static final int icon=0x7f05000f;
-        public static final int label=0x7f050010;
+        public static final int arrow=0x7f05000e;
+        public static final int icon=0x7f050010;
+        public static final int label=0x7f050011;
         public static final int textView1=0x7f050000;
     }
     public static final class layout {

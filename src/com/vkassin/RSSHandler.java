@@ -105,6 +105,9 @@ public class RSSHandler extends DefaultHandler {
 					else
 						if(localName.trim().equals(Common.FULLTEXT_TAG))
 	    					currentItem.fulltext = ss;
+						else
+							if(localName.trim().equals(Common.RUBRIC_TAG))
+		    					currentItem.rubric = ss;
 
     		    	
     	sb = new StringBuilder();

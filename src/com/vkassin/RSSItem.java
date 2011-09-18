@@ -4,22 +4,21 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class RSSItem implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 2L;
 
-	public static final int MAX_ITEMS = 30;
-	
 	public String title;
 	public String description;
 	public Date pubDate;
 	public String fulltext;
+	public String rubric;
 	
 	public RSSItem() {
+		
 		this.title = "";
 		this.description = "";
 		this.fulltext = "";
+		this.rubric = "";
 		this.pubDate = new Date(Date.UTC(110, 0, 0, 0, 0, 0));
 	}
 		
