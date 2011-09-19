@@ -7,7 +7,10 @@
 <LinearLayout android:id="@+id/LinearLayout02"
 android:orientation="horizontal"
 android:layout_weight="1"
-android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_gravity="center_horizontal">
+android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
+android:paddingBottom="2dp"
+
+>
 
 <ImageView android:id="@+id/mainpic"
 android:layout_width="fill_parent" android:layout_height="wrap_content"
@@ -49,9 +52,12 @@ android:id="@+id/TopNewsRubricTextView"></TextView>
 
 </LinearLayout>
 
+<ImageView android:id="@+id/line" android:src="@drawable/ttt" android:layout_width="wrap_content" android:layout_height="wrap_content"
+></ImageView>
 
 <LinearLayout android:id="@+id/LinearLayout05" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_gravity="center_horizontal"
 android:layout_weight="1"
+android:paddingTop="1dp"
 >
 <ListView android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
@@ -64,6 +70,7 @@ android:layout_weight="1"
 	android:cacheColorHint="@android:color/transparent"
 	android:id="@+id/NewsList">
 </ListView>
+
 </LinearLayout>
 
 </LinearLayout>
