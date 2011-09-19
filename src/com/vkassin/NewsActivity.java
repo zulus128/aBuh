@@ -23,6 +23,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -39,7 +40,8 @@ public class NewsActivity extends Activity {
 	private static final String TAG = "aBuh.NewsActivity"; 
 	private ListView list;
 	private NewsArrayAdapter adapter;
-	private URL mainpicURL;
+	//private URL mainpicURL;
+	private RSSItem topitem;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,6 +72,14 @@ public class NewsActivity extends Activity {
     	new getMainNews().execute();
     }
     
+    public boolean onTouchEvent(MotionEvent event) {
+    	
+    	Log.i(TAG, "tap");
+		Intent i = new Intent(NewsActivity.this, NewsDetail.class);
+		i.putExtra("rssitem", topitem);
+		startActivity(i);
+    	return false;
+    }
 /*	private void refresh() {
 		
 		String cont = "no content!";
@@ -118,17 +128,17 @@ public class NewsActivity extends Activity {
 
         	if(result.size() > 0) {
         	
-        		RSSItem item = result.get(0);
-            	if (item != null) {
+        		topitem = result.get(0);
+            	if (topitem != null) {
             		
             		TextView title = (TextView) NewsActivity.this.findViewById(R.id.TopNewsTitleTextView);
             		TextView rubr = (TextView) NewsActivity.this.findViewById(R.id.TopNewsRubricTextView);
             		
-            		title.setText(item.getShortTitle());
-            		rubr.setText(item.rubric);
+            		title.setText(topitem.getShortTitle());
+            		rubr.setText(topitem.rubric);
             		
             	}
-        		mainpicURL = item.imageUrl;
+        		//mainpicURL = item.imageUrl;
         		new getMainPic().execute();
         	}
         }
@@ -157,8 +167,8 @@ public class NewsActivity extends Activity {
     			FileOutputStream fOut = null;
 	                
     			try {
-				
-    				URLConnection ucon = mainpicURL.openConnection();
+    				
+    				URLConnection ucon = topitem.imageUrl.openConnection();
 					ucon.setUseCaches(true);
 					InputStream is = ucon.getInputStream();
 	                BufferedInputStream bis = new BufferedInputStream(is, is.available());
