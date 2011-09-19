@@ -2,7 +2,7 @@ package com.vkassin;
 
 import org.json.JSONObject;
 
-import com.vkassin.Common.ApiException;
+//import com.vkassin.Common.ApiException;
 
 import android.app.TabActivity;
 import android.content.Intent;
@@ -20,7 +20,7 @@ public class BuhWidget extends TabActivity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.main);
 
-        Common.prepareUserAgent(this);
+ //       Common.prepareUserAgent(this);
 
 	    Resources res = getResources(); // Resource object to get Drawables
 	    TabHost tabHost = getTabHost();  // The activity TabHost

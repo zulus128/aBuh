@@ -1,22 +1,36 @@
 package com.vkassin;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import com.vkassin.Common.ApiException;
+
+import org.apache.http.util.ByteArrayBuffer;
+
+//import com.vkassin.Common.ApiException;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
-
-
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+//import android.widget.ProgressBar;
+//import android.widget.Toast;
 
 import com.vkassin.NewsArrayAdapter;
 
@@ -25,6 +39,7 @@ public class NewsActivity extends Activity {
 	private static final String TAG = "aBuh.NewsActivity"; 
 	private ListView list;
 	private NewsArrayAdapter adapter;
+	private URL mainpicURL;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +67,7 @@ public class NewsActivity extends Activity {
 		});
     	
     	new getRSS().execute();
+    	new getMainNews().execute();
     }
     
 /*	private void refresh() {
@@ -84,6 +100,104 @@ public class NewsActivity extends Activity {
 
         	adapter.addItems(result);
 			adapter.notifyDataSetChanged();
+        }
+    }
+    
+    private class getMainNews extends AsyncTask<Context, Integer, ArrayList<RSSItem>> {
+
+    	@Override
+		protected ArrayList<RSSItem> doInBackground(Context... params) {
+			ArrayList<RSSItem> rssItems = Common.getMainNews();
+            return rssItems;
+		}
+    	
+        protected void onProgressUpdate(Integer... progress) {
+        }
+
+        protected void onPostExecute(final ArrayList<RSSItem> result) {
+
+        	if(result.size() > 0) {
+        	
+        		RSSItem item = result.get(0);
+            	if (item != null) {
+            		
+            		TextView title = (TextView) NewsActivity.this.findViewById(R.id.TopNewsTitleTextView);
+            		TextView rubr = (TextView) NewsActivity.this.findViewById(R.id.TopNewsRubricTextView);
+            		
+            		title.setText(item.getShortTitle());
+            		rubr.setText(item.rubric);
+            		
+            	}
+        		mainpicURL = item.imageUrl;
+        		new getMainPic().execute();
+        	}
+        }
+    }
+
+    private class getMainPic extends AsyncTask<Context, Integer, Bitmap> {
+
+    	@Override
+		protected Bitmap doInBackground(Context... params) {
+ //   		FileInputStream fIn = null;
+    		Bitmap img = null;
+    		boolean fileNotFound = true;//false;
+    		
+/*    		try {
+    			fIn = Start.this.openFileInput("racelogo.png");
+    			img = BitmapFactory.decodeStream(fIn);
+				fIn.close();
+    		} catch (FileNotFoundException e) {
+    			fileNotFound = true;
+    		} catch (IOException e) {
+    			Log.e("KSSS", "Race logo: IOException");
+    		}
+  */  		
+    		if(fileNotFound) {
+	    			
+    			FileOutputStream fOut = null;
+	                
+    			try {
+				
+    				URLConnection ucon = mainpicURL.openConnection();
+					ucon.setUseCaches(true);
+					InputStream is = ucon.getInputStream();
+	                BufferedInputStream bis = new BufferedInputStream(is, is.available());
+	                    
+	                    ByteArrayBuffer baf = new ByteArrayBuffer(50);
+	                    int current = 0;
+	                    while ((current = bis.read()) != -1) {
+	                            baf.append((byte) current);
+	                    }
+	                    
+	                    img = BitmapFactory.decodeByteArray(baf.toByteArray(), 0, baf.length());
+	
+	                    fOut = NewsActivity.this.openFileOutput("mainpic.png", Context.MODE_PRIVATE);
+	                    fOut.write(baf.toByteArray());
+	                    fOut.flush();
+	                    fOut.close();
+	                    is.close();
+	                    bis.close();
+	                    baf.clear();
+	                } catch (FileNotFoundException e) {
+	                } catch (IOException e) {
+					}
+    		}
+			
+            return img;
+		}
+    	
+        protected void onProgressUpdate(Integer... progress) {
+            
+        }
+
+        protected void onPostExecute(final Bitmap result) {
+        	
+        	ImageView mainpic = (ImageView) NewsActivity.this.findViewById(R.id.mainpic);
+        	
+        	if(result != null)
+        		mainpic.setImageBitmap(result);
+        	//else
+        		//mainpic.setImageResource(R.drawable.logo_fallback);
         }
     }
 }

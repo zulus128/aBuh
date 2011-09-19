@@ -1,5 +1,7 @@
 package com.vkassin;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import org.xml.sax.Attributes;
@@ -51,11 +53,11 @@ public class RSSHandler extends DefaultHandler {
     		//Log.w(TAG, "Item created");
     	}
     	else if(localName.trim().equals(Common.IMAGE_TAG)) {
-    		//try {
-			//	currentItem.imageUrl = new URL(atts.getValue("url"));
-			//} catch (MalformedURLException e) {
-			//	Log.e(TAG, "MalformedURLException");
-			//}
+    		try {
+				currentItem.imageUrl = new URL(atts.getValue("url"));
+			} catch (MalformedURLException e) {
+				Log.e(TAG, "MalformedURLException");
+			}
     	}
     } 
     

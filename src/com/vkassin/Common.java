@@ -65,14 +65,15 @@ public class Common {
 	public static final String BIGBANNER_TAG = "bigb";
 	public static final String LINKBANNER_TAG = "clink";
 
+	/*
     private static String sUserAgent = null;
     private static final int HTTP_STATUS_OK = 200;
+ 
+  
     private static byte[] sBuffer = new byte[50000];
     
 	public static class ApiException extends Exception {
-        /**
-		 * 
-		 */
+
 		private static final long serialVersionUID = 1L;
 
 		public ApiException(String detailMessage, Throwable throwable) {
@@ -89,7 +90,7 @@ public class Common {
             // Read package name and version number from manifest
             PackageManager manager = context.getPackageManager();
             PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);
-            sUserAgent = String.format("%s/%s (Linux; Android)"/*context.getString(R.string.template_user_agent)*/,
+            sUserAgent = String.format("%s/%s (Linux; Android)",
                     info.packageName, info.versionName);
 
         } catch(NameNotFoundException e) {
@@ -136,7 +137,8 @@ public class Common {
             throw new ApiException("Problem communicating with API", e);
         }
     }
-
+*/
+    
 	public static ArrayList<RSSItem> getNews() {
 		
 		RSSHandler handler = new RSSHandler();
@@ -144,6 +146,18 @@ public class Common {
 //		handler.SetOffset(offset);
 		
 		String errorMsg = generalWebServiceCall(MENU_URL, handler);
+		
+		if(errorMsg.length() > 0)
+			Log.e(TAG, errorMsg);
+		
+		return handler.getParsedData();
+	}
+	
+	public static ArrayList<RSSItem> getMainNews() {
+		
+		RSSHandler handler = new RSSHandler();
+
+		String errorMsg = generalWebServiceCall(TOPMENU_URL, handler);
 		
 		if(errorMsg.length() > 0)
 			Log.e(TAG, errorMsg);

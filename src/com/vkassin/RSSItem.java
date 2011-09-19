@@ -1,17 +1,22 @@
 package com.vkassin;
 
 import java.io.Serializable;
+import java.net.URL;
 import java.util.Date;
 
 public class RSSItem implements Serializable {
 
 	private static final long serialVersionUID = 2L;
 
+	public enum item_type { IT_NONE, IT_REGULARNEWS, IT_TOPNEWS, IT_QA, IT_PODCAST };
+	
 	public String title;
 	public String description;
 	public Date pubDate;
 	public String fulltext;
 	public String rubric;
+	public item_type type;
+	public URL imageUrl;
 	
 	public RSSItem() {
 		
@@ -19,6 +24,7 @@ public class RSSItem implements Serializable {
 		this.description = "";
 		this.fulltext = "";
 		this.rubric = "";
+		type = item_type.IT_NONE;
 		this.pubDate = new Date(Date.UTC(110, 0, 0, 0, 0, 0));
 	}
 		
