@@ -29,6 +29,7 @@ public class QAActivity extends ListActivity {
 		
 		ListView listView = getListView();
 		listView.setBackgroundColor(Color.WHITE);
+		listView.setFocusable(false);
 		
 		new getRSS().execute();
 	}
@@ -36,11 +37,11 @@ public class QAActivity extends ListActivity {
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		// Get the item that was clicked
-		Object o = this.getListAdapter().getItem(position);
-		String keyword = o.toString();
-		Toast.makeText(this, "You selected: " + keyword, Toast.LENGTH_LONG)
-				.show();
+		
+		Intent i = new Intent(QAActivity.this, QADetail.class);
+		RSSItem it = adapter.getItems().get(position);
+		i.putExtra("rssitem", it);
+		startActivity(i);
 
 	}
 
