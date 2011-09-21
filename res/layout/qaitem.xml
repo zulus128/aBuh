@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content" android:orientation="horizontal" android:background="#ffffff" android:layout_width="fill_parent"
+    android:paddingLeft="3dp"
+    >
+
+<TextView 
+android:layout_width="fill_parent" 
+android:layout_height="20px" 
+android:textSize="16px"
+android:textColor="#000000" android:textStyle="bold"
+android:layout_gravity="center_vertical"
+android:id="@+id/QADateTextView">
+</TextView>
+
+<LinearLayout android:id="@+id/LinearLayout01" android:orientation="vertical"
+android:background="#ffffff" android:paddingLeft="5dp"
+android:layout_height="wrap_content" android:layout_width="fill_parent"
+>
+
+<TextView
+android:layout_width="fill_parent" 
+android:layout_height="wrap_content"
+android:textSize="16px"
+android:textColor="#000000"
+android:background="#ffffff"
+android:layout_gravity="center_vertical"
+android:id="@+id/QATitleTextView" android:lines="2"></TextView>
+
+<LinearLayout android:id="@+id/LinearLayout02" android:orientation="horizontal"
+android:layout_height="wrap_content" android:layout_width="fill_parent">
+
+<ImageView android:id="@+id/arrow" android:src="@drawable/arrow" android:layout_width="wrap_content" android:layout_height="wrap_content"></ImageView>
+
+<TextView
+android:layout_width="fill_parent" 
+android:layout_height="wrap_content"
+android:textSize="12px"
+android:paddingLeft="3dp"
+android:textColor="#000000"
+android:id="@+id/QARubricTextView"></TextView>
+</LinearLayout>
+
+</LinearLayout>
+
+</LinearLayout>

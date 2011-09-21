@@ -40,14 +40,11 @@ public class NewsActivity extends Activity {
 	private static final String TAG = "aBuh.NewsActivity"; 
 	private ListView list;
 	private NewsArrayAdapter adapter;
-	//private URL mainpicURL;
 	private RSSItem topitem;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        //refresh();
         
         setContentView(R.layout.news);
         
@@ -80,19 +77,7 @@ public class NewsActivity extends Activity {
 		startActivity(i);
     	return false;
     }
-/*	private void refresh() {
-		
-		String cont = "no content!";
-		try {
-			cont = Common.getUrlContent(Common.MENU_URL);
-		} catch (ApiException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		Log.i(TAG, cont);
-	}
-*/
+
     private class getRSS extends AsyncTask<Context, Integer, ArrayList<RSSItem>> {
 
     	@Override

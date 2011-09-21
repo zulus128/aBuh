@@ -36,13 +36,14 @@ public final class R {
         public static final int NewsTitleTextView=0x7f050013;
         public static final int NewsWebLinearLayout=0x7f050010;
         public static final int NewsWrapper=0x7f05000a;
+        public static final int QADateTextView=0x7f050015;
+        public static final int QARubricTextView=0x7f050017;
+        public static final int QATitleTextView=0x7f050016;
         public static final int ScrollView01=0x7f05000b;
         public static final int TextView01=0x7f05000e;
         public static final int TopNewsRubricTextView=0x7f050006;
         public static final int TopNewsTitleTextView=0x7f050003;
         public static final int arrow=0x7f050005;
-        public static final int icon=0x7f050015;
-        public static final int label=0x7f050016;
         public static final int line=0x7f050007;
         public static final int mainpic=0x7f050001;
     }
@@ -51,7 +52,7 @@ public final class R {
         public static final int news=0x7f030001;
         public static final int newsdetail=0x7f030002;
         public static final int newsitem=0x7f030003;
-        public static final int qalayout=0x7f030004;
+        public static final int qaitem=0x7f030004;
     }
     public static final class string {
         public static final int app_name=0x7f040000;

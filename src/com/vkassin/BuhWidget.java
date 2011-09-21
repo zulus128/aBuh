@@ -85,7 +85,7 @@ public class BuhWidget extends TabActivity {
 	    lf.setTextSize(12);
 	    lf.setPadding(0, 0, 0, 2);
 	    
-	    tabHost.setCurrentTab(0);
+	    tabHost.setCurrentTab(1);
 	}
 
     @Override
