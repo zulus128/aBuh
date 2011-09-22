@@ -33,7 +33,7 @@ public class RSSItem implements Serializable {
 	}
 	
 	public String getShortContent() {
-		return description.length() > 70 ? description.substring(0, 67) + "..." : description;
+		return description.length() > 90 ? description.substring(0, 87) + "..." : description;
 	}
 
 	public Date getPubDate() {
