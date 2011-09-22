@@ -38,8 +38,8 @@ public final class R {
         public static final int NewsWrapper=0x7f05000a;
         public static final int QADate=0x7f050018;
         public static final int QADateTextView=0x7f05001a;
+        public static final int QAFullLinearLayout=0x7f05001c;
         public static final int QAItem=0x7f050016;
-        public static final int QARubricTextView=0x7f05001c;
         public static final int QATitle=0x7f050017;
         public static final int QATitleTextView=0x7f05001b;
         public static final int QAWebLinearLayout=0x7f050019;
