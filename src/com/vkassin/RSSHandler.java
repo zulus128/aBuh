@@ -110,6 +110,9 @@ public class RSSHandler extends DefaultHandler {
 						else
 							if(localName.trim().equals(Common.RUBRIC_TAG))
 		    					currentItem.rubric = ss;
+							else
+								if(localName.trim().equals(Common.ITUNESLINK_TAG))
+			    					currentItem.ituneslink = ss;
 
     		    	
     	sb = new StringBuilder();

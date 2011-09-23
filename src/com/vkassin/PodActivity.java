@@ -6,6 +6,7 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,23 +18,26 @@ public class PodActivity extends ListActivity {
 
 	private static final String TAG = "aBuh.PodActivity"; 
 	
-	private QAArrayAdapter adapter;
-         String[] listItems = {"exploring", "android", 
-                               "list", "activities"};
+	private PodArrayAdapter adapter;
+    //     String[] listItems = {"exploring", "android", 
+    //                           "list", "activities"};
 
          public void onCreate(Bundle icicle) {
 
 		super.onCreate(icicle);
 
-		setContentView(R.layout.qas);
+		setContentView(R.layout.pods);
 
-		setListAdapter(new ArrayAdapter(this, 
-                android.R.layout.simple_list_item_1, listItems));
+	//	setListAdapter(new ArrayAdapter(this, 
+//                android.R.layout.simple_list_item_1, listItems));
 		 
-    	//adapter = new QAArrayAdapter(this, R.layout.qaitem, new ArrayList<RSSItem>());
-		//this.setListAdapter(adapter);
+    	adapter = new PodArrayAdapter(this, R.layout.poditem, new ArrayList<RSSItem>());
+		this.setListAdapter(adapter);
 				
-		//new getRSS().execute();
+		ListView listView = getListView();
+		listView.setBackgroundColor(Color.WHITE);
+		
+		new getRSS().execute();
 	}
 
 	@Override
@@ -41,13 +45,18 @@ public class PodActivity extends ListActivity {
 		super.onListItemClick(l, v, position, id);
 		
 		Log.i(TAG,"click");
+
+		RSSItem it = adapter.getItems().get(position);
+		String url = it.ituneslink;
+		final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+		startActivity(intent);
 	}
     
     private class getRSS extends AsyncTask<Context, Integer, ArrayList<RSSItem>> {
 
     	@Override
 		protected ArrayList<RSSItem> doInBackground(Context... params) {
-			ArrayList<RSSItem> rssItems = Common.getQAs();
+			ArrayList<RSSItem> rssItems = Common.getPods();
             return rssItems;
 		}
     	

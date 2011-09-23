@@ -16,10 +16,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class QAActivity extends ListActivity implements OnItemClickListener {
-	
-	String[] listItems = {"exploring", "android", 
-                          "list", "activities"};
+public class QAActivity extends ListActivity {
 	
 	private static final String TAG = "aBuh.QAActivity"; 
 	private QAArrayAdapter adapter;
@@ -27,14 +24,10 @@ public class QAActivity extends ListActivity implements OnItemClickListener {
 	public void onCreate(Bundle icicle) {
 
 		super.onCreate(icicle);
-
 		setContentView(R.layout.qas);
 		 
     	adapter = new QAArrayAdapter(this, R.layout.qaitem, new ArrayList<RSSItem>());
-		
     	setListAdapter(adapter);
-		
-		//setListAdapter(new ArrayAdapter(this, R.layout.qaitem, listItems));
 		
 		ListView listView = getListView();
 		listView.setBackgroundColor(Color.WHITE);
@@ -43,17 +36,11 @@ public class QAActivity extends ListActivity implements OnItemClickListener {
 		new getRSS().execute();
 	}
 
-    public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
-
-		Log.i(TAG,"click1");
-
-    }
-
 	@Override
 	protected void onListItemClick(ListView l, View v, final int position, long id) {
 		super.onListItemClick(l, v, position, id);
 		
-		Log.i(TAG,"click");
+		//Log.i(TAG,"click");
 		Intent i = new Intent(QAActivity.this, QADetail.class);
 		RSSItem it = adapter.getItems().get(position);
 		i.putExtra("rssitem", it);

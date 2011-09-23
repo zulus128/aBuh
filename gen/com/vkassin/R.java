@@ -27,7 +27,7 @@ public final class R {
         public static final int LinearLayout03=0x7f050002;
         public static final int LinearLayout04=0x7f050004;
         public static final int LinearLayout05=0x7f050008;
-        public static final int LinearLayout09=0x7f05001a;
+        public static final int LinearLayout09=0x7f05001c;
         public static final int NewsDate=0x7f05000f;
         public static final int NewsDateTextView=0x7f050011;
         public static final int NewsItem=0x7f05000c;
@@ -37,14 +37,16 @@ public final class R {
         public static final int NewsTitleTextView=0x7f050013;
         public static final int NewsWebLinearLayout=0x7f050010;
         public static final int NewsWrapper=0x7f05000a;
-        public static final int QADate=0x7f050018;
-        public static final int QADateTextView=0x7f05001b;
-        public static final int QAFullLinearLayout=0x7f05001d;
-        public static final int QAItem=0x7f050016;
-        public static final int QATitle=0x7f050017;
-        public static final int QATitleTextView=0x7f05001c;
-        public static final int QAWebLinearLayout=0x7f050019;
-        public static final int QAWrapper=0x7f050015;
+        public static final int PodFullTextView=0x7f050016;
+        public static final int PodTitleTextView=0x7f050015;
+        public static final int QADate=0x7f05001a;
+        public static final int QADateTextView=0x7f05001d;
+        public static final int QAFullTextView=0x7f05001f;
+        public static final int QAItem=0x7f050018;
+        public static final int QATitle=0x7f050019;
+        public static final int QATitleTextView=0x7f05001e;
+        public static final int QAWebLinearLayout=0x7f05001b;
+        public static final int QAWrapper=0x7f050017;
         public static final int ScrollView01=0x7f05000b;
         public static final int TextView01=0x7f05000e;
         public static final int TopNewsRubricTextView=0x7f050006;
@@ -58,10 +60,11 @@ public final class R {
         public static final int news=0x7f030001;
         public static final int newsdetail=0x7f030002;
         public static final int newsitem=0x7f030003;
-        public static final int pods=0x7f030004;
-        public static final int qadetail=0x7f030005;
-        public static final int qaitem=0x7f030006;
-        public static final int qas=0x7f030007;
+        public static final int poditem=0x7f030004;
+        public static final int pods=0x7f030005;
+        public static final int qadetail=0x7f030006;
+        public static final int qaitem=0x7f030007;
+        public static final int qas=0x7f030008;
     }
     public static final class string {
         public static final int app_name=0x7f040000;

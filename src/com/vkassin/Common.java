@@ -86,6 +86,17 @@ public class Common {
 		return handler.getParsedData();
 	}
 	
+	public static ArrayList<RSSItem> getPods() {
+		
+		RSSHandler handler = new RSSHandler();
+		String errorMsg = generalWebServiceCall(PODCAST_URL, handler);
+		
+		if(errorMsg.length() > 0)
+			Log.e(TAG, errorMsg);
+		
+		return handler.getParsedData();
+	}
+	
 	public static ArrayList<RSSItem> getMainNews() {
 		
 		RSSHandler handler = new RSSHandler();

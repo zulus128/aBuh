@@ -17,6 +17,7 @@ public class RSSItem implements Serializable {
 	public String rubric;
 	public item_type type;
 	public URL imageUrl;
+	public String ituneslink;
 	
 	public RSSItem() {
 		
@@ -24,6 +25,7 @@ public class RSSItem implements Serializable {
 		this.description = "";
 		this.fulltext = "";
 		this.rubric = "";
+		this.ituneslink = "";
 		type = item_type.IT_NONE;
 		this.pubDate = new Date(Date.UTC(110, 0, 0, 0, 0, 0));
 	}
@@ -33,7 +35,7 @@ public class RSSItem implements Serializable {
 	}
 	
 	public String getShortContent() {
-		return description.length() > 90 ? description.substring(0, 87) + "..." : description;
+		return description.length() > 100 ? description.substring(0, 97) + "..." : description;
 	}
 
 	public Date getPubDate() {
