@@ -50,7 +50,8 @@ public class QAArrayAdapter extends ArrayAdapter<RSSItem> {
             		"</style></head>"
             	+ "<body>" + item.getShortContent() + "</body></html>";
             webview.loadDataWithBaseURL(null, content, "text/html", "utf-8", "about:blank");
-            
+            webview.setFocusable(false);
+            webview.setFocusableInTouchMode(false);
             qaContent.addView(webview);
   		
     	}
