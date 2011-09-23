@@ -18,6 +18,7 @@ public class RSSItem implements Serializable {
 	public item_type type;
 	public URL imageUrl;
 	public String ituneslink;
+	public String mplink;
 	
 	public RSSItem() {
 		
@@ -26,6 +27,7 @@ public class RSSItem implements Serializable {
 		this.fulltext = "";
 		this.rubric = "";
 		this.ituneslink = "";
+		this.mplink = "";
 		type = item_type.IT_NONE;
 		this.pubDate = new Date(Date.UTC(110, 0, 0, 0, 0, 0));
 	}

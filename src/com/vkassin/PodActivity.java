@@ -47,7 +47,7 @@ public class PodActivity extends ListActivity {
 		Log.i(TAG,"click");
 
 		RSSItem it = adapter.getItems().get(position);
-		String url = it.ituneslink;
+		String url = it.mplink;
 		final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
 		startActivity(intent);
 	}
