@@ -18,6 +18,7 @@ android:scaleType="fitStart"
 android:layout_weight="3"
 android:layout_gravity="left"
 ></ImageView>
+<!--<ProgressBar android:layout_weight="3" android:layout_width="wrap_content" android:id="@+id/progressBar1" android:layout_height="wrap_content" style="?android:attr/progressBarStyleLarge"></ProgressBar>-->
 
 
 <LinearLayout android:id="@+id/LinearLayout03" android:orientation="vertical"

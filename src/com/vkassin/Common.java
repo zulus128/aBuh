@@ -3,9 +3,12 @@ package com.vkassin;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
 import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -33,7 +36,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.util.Log;
-
 
 public class Common {
 
@@ -64,6 +66,42 @@ public class Common {
 	public static final String BIGBANNER_TAG = "bigb";
 	public static final String LINKBANNER_TAG = "clink";
     
+	public static Context app_ctx;
+	
+	private static ArrayList<RSSItem> favourites;
+	
+	public static void addToFavr(RSSItem item) {
+	
+		favourites.add(item);
+		
+		FileOutputStream fos;
+		try {
+			
+			fos = app_ctx.openFileOutput("favourites", Context.MODE_PRIVATE);
+			ObjectOutputStream os = new ObjectOutputStream(fos);
+			os.writeObject(favourites);
+			os.close();
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static ArrayList<RSSItem> getFavr() {
+	/*
+	FileInputStream fileInputStream = new FileInputStream("foo.ser");
+	ObjectInputStream oInputStream = new ObjectInputStream(fileInputStream);
+	Object one = oInputStream.readObject();
+	LinkedList<Diff_match_patch.Patch> patches3 = (LinkedList<Diff_match_patch.Patch>) one;
+	os.close();
+	*/
+	return favourites;
+	}
+	
 	public static ArrayList<RSSItem> getNews() {
 		
 		RSSHandler handler = new RSSHandler();

@@ -29,6 +29,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 //import android.widget.ProgressBar;
 //import android.widget.Toast;
@@ -87,8 +88,8 @@ public class NewsActivity extends Activity {
 		}
     	
         protected void onProgressUpdate(Integer... progress) {
-  //          ProgressBar mProgress = (ProgressBar)Start.this.findViewById(R.id.MoreNewsProgressBar);
-  //          mProgress.setProgress(progress[0]);
+        //    ProgressBar mProgress = (ProgressBar)NewsActivity.this.findViewById(R.id.progressBar1);
+        //    mProgress.setProgress(progress[0]);
         }
 
         protected void onPostExecute(final ArrayList<RSSItem> result) {

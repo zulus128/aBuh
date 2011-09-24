@@ -3,6 +3,9 @@ package com.vkassin;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -12,6 +15,7 @@ public class NewsDetail extends Activity {
 	private TextView newsTitle;
 	private TextView newsDate;
 	private LinearLayout newsContent;
+	private RSSItem rssItem;
 	
 	// Called when the activity is first created.
     @Override
@@ -19,7 +23,7 @@ public class NewsDetail extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newsdetail);
         
-        RSSItem rssItem = (RSSItem)this.getIntent().getExtras().get("rssitem");
+        rssItem = (RSSItem)this.getIntent().getExtras().get("rssitem");
         
         newsTitle = (TextView)this.findViewById(R.id.NewsTitle);
         newsDate = (TextView)this.findViewById(R.id.NewsDate);
@@ -36,5 +40,20 @@ public class NewsDetail extends Activity {
         newsContent.addView(webview);
         
     }
-    
+ 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.newsdetailmenu, menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	        case R.id.menufavr: Common.addToFavr(rssItem);
+	                            break;
+	    }
+	    return true;
+	}
 }

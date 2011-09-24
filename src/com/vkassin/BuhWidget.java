@@ -25,6 +25,8 @@ public class BuhWidget extends TabActivity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.main);
 
+	    Common.app_ctx = getApplicationContext();
+	    
  //       Common.prepareUserAgent(this);
 
 	    Resources res = getResources(); // Resource object to get Drawables
@@ -85,7 +87,7 @@ public class BuhWidget extends TabActivity {
 	    lf.setTextSize(12);
 	    lf.setPadding(0, 0, 0, 2);
 	    
-	    tabHost.setCurrentTab(3);
+	    tabHost.setCurrentTab(0);
 	}
 
     @Override
