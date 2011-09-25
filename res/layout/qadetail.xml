@@ -10,7 +10,12 @@
 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nyhetsrubrik" android:id="@+id/QATitle" android:textColor="#122137" android:textStyle="bold" android:textSize="21px"></TextView>
 <TextView android:text="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/QADate" android:textColor="#959595" android:textSize="11px" android:layout_marginTop="5px"></TextView>
 
-<LinearLayout android:id="@+id/QAWebLinearLayout" android:layout_height="fill_parent" android:layout_width="fill_parent" android:layout_marginTop="4px"></LinearLayout>
+<LinearLayout android:id="@+id/QAWebLinearLayout1" android:layout_height="fill_parent" android:layout_width="fill_parent" android:layout_marginTop="4px"></LinearLayout>
+
+<ImageView android:id="@+id/line" android:src="@drawable/ttt" android:layout_width="wrap_content" android:layout_height="wrap_content"
+></ImageView>
+
+<LinearLayout android:id="@+id/QAWebLinearLayout2" android:layout_height="fill_parent" android:layout_width="fill_parent" android:layout_marginTop="4px"></LinearLayout>
 
 </LinearLayout>
 </ScrollView>

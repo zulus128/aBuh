@@ -4,23 +4,23 @@ import java.io.Serializable;
 import java.net.URL;
 import java.util.Date;
 
+import com.vkassin.Common.item_type;
+
 public class RSSItem implements Serializable {
 
-	private static final long serialVersionUID = 2L;
-
-	public enum item_type { IT_NONE, IT_REGULARNEWS, IT_TOPNEWS, IT_QA, IT_PODCAST };
+	private static final long serialVersionUID = 22L;
 	
 	public String title;
 	public String description;
 	public Date pubDate;
 	public String fulltext;
 	public String rubric;
-	public item_type type;
+	public Common.item_type type;
 	public URL imageUrl;
 	public String ituneslink;
 	public String mplink;
 	
-	public RSSItem() {
+	public RSSItem(item_type t) {
 		
 		this.title = "";
 		this.description = "";
@@ -28,7 +28,7 @@ public class RSSItem implements Serializable {
 		this.rubric = "";
 		this.ituneslink = "";
 		this.mplink = "";
-		type = item_type.IT_NONE;
+		type = t;//item_type.IT_NONE;
 		this.pubDate = new Date(Date.UTC(110, 0, 0, 0, 0, 0));
 	}
 		

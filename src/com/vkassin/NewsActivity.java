@@ -68,6 +68,8 @@ public class NewsActivity extends Activity {
     	
     	new getRSS().execute();
     	new getMainNews().execute();
+    	
+    	Common.loadFavr();
     }
     
     public boolean onTouchEvent(MotionEvent event) {

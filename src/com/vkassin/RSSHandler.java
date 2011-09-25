@@ -9,6 +9,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import android.util.Log;
 import com.vkassin.RSSItem;
+import com.vkassin.Common.item_type;
 
 public class RSSHandler extends DefaultHandler {
 	
@@ -18,17 +19,15 @@ public class RSSHandler extends DefaultHandler {
 	
 	// Used to define what elements we are currently in
     private boolean inItem = false;
- /*   private boolean inTitle = false;
-    private boolean inDescription = false;
-    private boolean inPubDate = false;
-    private boolean inLink = false;
-    private boolean inAuthor = false;
-   */ 
-
 	private RSSItem currentItem;
-
 	private StringBuilder sb = new StringBuilder();
-    
+	private item_type itemtype;
+	
+	public RSSHandler(item_type t) {
+		
+		itemtype = t;
+	}
+	
     public ArrayList<RSSItem> getParsedData() {
         return this.parsedDate;
     }
@@ -49,7 +48,7 @@ public class RSSHandler extends DefaultHandler {
     	
     	if(localName.trim().equals(Common.ITEM_TAG)) {
     		inItem = true;
-    		currentItem = new RSSItem();
+    		currentItem = new RSSItem(itemtype);
     		//Log.w(TAG, "Item created");
     	}
     	else if(localName.trim().equals(Common.IMAGE_TAG)) {

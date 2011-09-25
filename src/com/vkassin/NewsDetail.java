@@ -27,6 +27,8 @@ public class NewsDetail extends Activity {
         
         newsTitle = (TextView)this.findViewById(R.id.NewsTitle);
         newsDate = (TextView)this.findViewById(R.id.NewsDate);
+       
+        
         newsContent = (LinearLayout)this.findViewById(R.id.NewsWebLinearLayout);
         
         newsTitle.setText(rssItem.title);

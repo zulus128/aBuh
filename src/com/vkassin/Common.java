@@ -3,13 +3,17 @@ package com.vkassin;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Reader;
+import java.io.StreamCorruptedException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -37,9 +41,13 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.util.Log;
 
+import com.vkassin.Common.item_type;
+
 public class Common {
 
 	private static final String TAG = "aBuh.Common"; 
+	
+	public enum item_type { IT_NONE, IT_REGULARNEWS, IT_TOPNEWS, IT_QA, IT_PODCAST };
 	
 	public static final String MENU_URL_FOR_REACH = "www.buhgalteria.ru";
 	public static final String MENU_URL = "http://www.buhgalteria.ru/rss/iphoneapp/iphonenews.php";
@@ -65,7 +73,8 @@ public class Common {
 	public static final String SMALLBANNER_TAG = "smallb";
 	public static final String BIGBANNER_TAG = "bigb";
 	public static final String LINKBANNER_TAG = "clink";
-    
+	public static final String FAV_FNAME = "favourites";
+	
 	public static Context app_ctx;
 	
 	private static ArrayList<RSSItem> favourites;
@@ -74,13 +83,34 @@ public class Common {
 	
 		favourites.add(item);
 		
+		saveFavr();
+		
+	}
+	
+	public static void delFavr(int i) {
+		
+		favourites.remove(i);
+		Log.w(TAG, "size1 = " + favourites.size());
+		saveFavr();
+		
+	}
+	
+	public static ArrayList<RSSItem> getFavrs() {
+	
+		Log.w(TAG, "size = " + favourites.size());
+		return favourites;
+	}
+	
+	public static void saveFavr() {
+	
 		FileOutputStream fos;
 		try {
 			
-			fos = app_ctx.openFileOutput("favourites", Context.MODE_PRIVATE);
+			fos = app_ctx.openFileOutput(FAV_FNAME, Context.MODE_PRIVATE);
 			ObjectOutputStream os = new ObjectOutputStream(fos);
 			os.writeObject(favourites);
 			os.close();
+			fos.close();
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -90,21 +120,42 @@ public class Common {
 			e.printStackTrace();
 		}
 	}
-
-	public static ArrayList<RSSItem> getFavr() {
-	/*
-	FileInputStream fileInputStream = new FileInputStream("foo.ser");
-	ObjectInputStream oInputStream = new ObjectInputStream(fileInputStream);
-	Object one = oInputStream.readObject();
-	LinkedList<Diff_match_patch.Patch> patches3 = (LinkedList<Diff_match_patch.Patch>) one;
-	os.close();
-	*/
-	return favourites;
+	
+	public static void loadFavr() {
+	   
+	FileInputStream fileInputStream;
+	try {
+		
+		fileInputStream = app_ctx.openFileInput(FAV_FNAME);
+		ObjectInputStream oInputStream = new ObjectInputStream(fileInputStream);
+		Object one = oInputStream.readObject();
+		favourites = (ArrayList<RSSItem>) one;
+		oInputStream.close();
+		fileInputStream.close();
+		
+	} catch (FileNotFoundException e) {
+		
+		//e.printStackTrace();
+  	   Log.i(TAG, "creates blank. no file " + FAV_FNAME);
+ 	   favourites = new ArrayList<RSSItem>();
+ 	   
+	} catch (StreamCorruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	//return favourites;
 	}
 	
 	public static ArrayList<RSSItem> getNews() {
 		
-		RSSHandler handler = new RSSHandler();
+		RSSHandler handler = new RSSHandler(item_type.IT_REGULARNEWS);
 		String errorMsg = generalWebServiceCall(MENU_URL, handler);
 		
 		if(errorMsg.length() > 0)
@@ -115,7 +166,7 @@ public class Common {
 
 	public static ArrayList<RSSItem> getQAs() {
 		
-		RSSHandler handler = new RSSHandler();
+		RSSHandler handler = new RSSHandler(item_type.IT_QA);
 		String errorMsg = generalWebServiceCall(QAMENU_URL, handler);
 		
 		if(errorMsg.length() > 0)
@@ -126,7 +177,7 @@ public class Common {
 	
 	public static ArrayList<RSSItem> getPods() {
 		
-		RSSHandler handler = new RSSHandler();
+		RSSHandler handler = new RSSHandler(item_type.IT_PODCAST);
 		String errorMsg = generalWebServiceCall(PODCAST_URL, handler);
 		
 		if(errorMsg.length() > 0)
@@ -137,7 +188,7 @@ public class Common {
 	
 	public static ArrayList<RSSItem> getMainNews() {
 		
-		RSSHandler handler = new RSSHandler();
+		RSSHandler handler = new RSSHandler(item_type.IT_TOPNEWS);
 
 		String errorMsg = generalWebServiceCall(TOPMENU_URL, handler);
 		
