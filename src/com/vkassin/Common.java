@@ -47,7 +47,7 @@ public class Common {
 
 	private static final String TAG = "aBuh.Common"; 
 	
-	public enum item_type { IT_NONE, IT_REGULARNEWS, IT_TOPNEWS, IT_QA, IT_PODCAST };
+	public enum item_type { IT_NONE, IT_REGULARNEWS, IT_TOPNEWS, IT_QA, IT_PODCAST, IT_BANNER };
 	
 	public static final String MENU_URL_FOR_REACH = "www.buhgalteria.ru";
 	public static final String MENU_URL = "http://www.buhgalteria.ru/rss/iphoneapp/iphonenews.php";
@@ -198,7 +198,11 @@ public class Common {
 		return handler.getParsedData();
 	}
 	
-	private static String generalWebServiceCall(String urlStr, ContentHandler handler) {
+	public static void getBanner() {
+		
+	}
+	
+	public static String generalWebServiceCall(String urlStr, ContentHandler handler) {
 		
 		String errorMsg = "";
 		

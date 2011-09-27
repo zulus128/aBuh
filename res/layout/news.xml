@@ -6,9 +6,9 @@
 
 <LinearLayout android:id="@+id/LinearLayout02"
 android:orientation="horizontal"
-android:layout_weight="1"
 android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
 android:paddingBottom="2dp"
+android:layout_weight="1"
 
 >
 
@@ -53,25 +53,37 @@ android:id="@+id/TopNewsRubricTextView"></TextView>
 
 </LinearLayout>
 
-<ImageView android:id="@+id/line" android:src="@drawable/ttt" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<ImageView android:id="@+id/line" android:src="@drawable/ttt" android:layout_width="fill_parent" android:layout_height="wrap_content"
 ></ImageView>
 
-<LinearLayout android:id="@+id/LinearLayout05" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_gravity="center_horizontal"
-android:layout_weight="1"
+<LinearLayout android:id="@+id/LinearLayout05" android:layout_width="fill_parent" android:layout_height="fill_parent"
+android:orientation="vertical"
 android:paddingTop="1dp"
+android:layout_weight="1"
 >
+
 <ListView android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
+	android:layout_weight="0.85"
+	android:layout_height="1dp"
 	android:dividerHeight="2px"
 	android:background="#ffffff"
 	android:choiceMode="singleChoice"
-	android:headerDividersEnabled="true"
+	android:headerDividersEnabled="false"
 	android:footerDividersEnabled="false"
 	android:listSelector="@android:color/transparent"
 	android:cacheColorHint="@android:color/transparent"
 	android:id="@+id/NewsList">
 </ListView>
 
+<ImageView android:id="@+id/banner"
+android:layout_width="fill_parent" android:layout_height="1dp"
+android:layout_weight="0.15"
+android:padding="0dp"
+android:layout_margin="0dp"
+></ImageView>
+
 </LinearLayout>
+
+
 
 </LinearLayout>

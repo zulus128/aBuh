@@ -35,6 +35,7 @@ import android.widget.TextView;
 //import android.widget.Toast;
 
 import com.vkassin.NewsArrayAdapter;
+import com.vkassin.Common.item_type;
 
 public class NewsActivity extends Activity {
 
@@ -66,10 +67,17 @@ public class NewsActivity extends Activity {
 			}
 		});
     	
-    	new getRSS().execute();
-    	new getMainNews().execute();
+    	refresh();
     	
     	Common.loadFavr();
+    }
+    
+    private void refresh() {
+    	
+    	new getRSS().execute();
+    	new getMainNews().execute();
+    	new getBanner().execute();
+
     }
     
     public boolean onTouchEvent(MotionEvent event) {
@@ -96,7 +104,7 @@ public class NewsActivity extends Activity {
 
         protected void onPostExecute(final ArrayList<RSSItem> result) {
 
-        	adapter.addItems(result);
+        	adapter.setItems(result);
 			adapter.notifyDataSetChanged();
         }
     }
@@ -198,4 +206,81 @@ public class NewsActivity extends Activity {
         		//mainpic.setImageResource(R.drawable.logo_fallback);
         }
     }
+    
+    private class getBanner extends AsyncTask<Context, Integer, Bitmap> {
+
+    	@Override
+		protected Bitmap doInBackground(Context... params) {
+    		Bitmap img = null;
+    		boolean fileNotFound = true;//false;
+    		
+    		if(fileNotFound) {
+	    			
+    			FileOutputStream fOut = null;
+	                
+    			try {
+    				RSSHandler handler = new RSSHandler(item_type.IT_BANNER);
+    				String errorMsg = Common.generalWebServiceCall(Common.BANNER_URL, handler);
+    				
+    				if(errorMsg.length() > 0)
+    					Log.e(TAG, errorMsg);
+    				else {
+    					
+    					ArrayList<RSSItem> result = handler.getParsedData();
+    					
+    					if(result.size() > 0) {
+    			        	
+    		        		RSSItem bitem = result.get(0);
+    		            	if (bitem != null) {
+    		            		
+    		            		URLConnection ucon = new URL(bitem.bigb).openConnection();
+    		            		ucon.setUseCaches(true);
+    		            		InputStream is = ucon.getInputStream();
+    		            		BufferedInputStream bis = new BufferedInputStream(is, is.available());
+	                    
+    		            		ByteArrayBuffer baf = new ByteArrayBuffer(50);
+    		            		int current = 0;
+    		            		while ((current = bis.read()) != -1) {
+    		            			baf.append((byte) current);
+    		            		}
+	                    
+    		            		img = BitmapFactory.decodeByteArray(baf.toByteArray(), 0, baf.length());
+	
+    		            		fOut = NewsActivity.this.openFileOutput("bigbanner.png", Context.MODE_PRIVATE);
+    		            		fOut.write(baf.toByteArray());
+    		            		fOut.flush();
+    		            		fOut.close();
+    		            		is.close();
+    		            		bis.close();
+    		            		baf.clear();
+    		            	}
+    					}
+    				}
+	                } catch (FileNotFoundException e) {
+	                } catch (IOException e) {
+					}
+    		}
+			
+            return img;
+		}
+    	
+        protected void onProgressUpdate(Integer... progress) {
+            
+        }
+
+        protected void onPostExecute(final Bitmap result) {
+        	
+        	ImageView ban = (ImageView) NewsActivity.this.findViewById(R.id.banner);
+        	
+        	if(result != null) {
+        		
+        		//ban.setVisibility(View.GONE);
+        		ban.setVisibility(View.VISIBLE);
+        		ban.setImageBitmap(result);
+        	}
+        	else
+        		ban.setVisibility(View.GONE);
+        }
+    }
+
 }
