@@ -115,6 +115,9 @@ public class RSSHandler extends DefaultHandler {
 								else
 									if(inItem && localName.trim().equals(Common.BIGBANNER_TAG))
 				    					currentItem.bigb = ss;
+									else
+										if(inItem && localName.trim().equals(Common.LINKBANNER_TAG))
+					    					currentItem.clink = ss;
 
     		    	
     	sb = new StringBuilder();

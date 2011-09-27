@@ -19,12 +19,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
@@ -64,6 +66,21 @@ public class NewsActivity extends Activity {
 				i.putExtra("rssitem", it);
 				startActivity(i);
 				//Log.i(TAG, "row: "+arg2+" arg3: "+arg3);
+			}
+		});
+    	
+    	ImageView ban = (ImageView) NewsActivity.this.findViewById(R.id.banner);
+    	ban.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				
+				//Log.i(TAG, "Click!");
+				RSSItem it = Common.bannerItem;
+				if(it != null){
+					String url = it.clink;
+					final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+					startActivity(intent);
+				}
 			}
 		});
     	
@@ -230,10 +247,10 @@ public class NewsActivity extends Activity {
     					
     					if(result.size() > 0) {
     			        	
-    		        		RSSItem bitem = result.get(0);
-    		            	if (bitem != null) {
+    		        		Common.bannerItem = result.get(0);
+    		            	if (Common.bannerItem != null) {
     		            		
-    		            		URLConnection ucon = new URL(bitem.bigb).openConnection();
+    		            		URLConnection ucon = new URL(Common.bannerItem.bigb).openConnection();
     		            		ucon.setUseCaches(true);
     		            		InputStream is = ucon.getInputStream();
     		            		BufferedInputStream bis = new BufferedInputStream(is, is.available());
@@ -246,7 +263,7 @@ public class NewsActivity extends Activity {
 	                    
     		            		img = BitmapFactory.decodeByteArray(baf.toByteArray(), 0, baf.length());
 	
-    		            		fOut = NewsActivity.this.openFileOutput("bigbanner.png", Context.MODE_PRIVATE);
+    		            		fOut = NewsActivity.this.openFileOutput(Common.BANNER_FNAME, Context.MODE_PRIVATE);
     		            		fOut.write(baf.toByteArray());
     		            		fOut.flush();
     		            		fOut.close();

@@ -74,7 +74,10 @@ public class Common {
 	public static final String BIGBANNER_TAG = "bigb";
 	public static final String LINKBANNER_TAG = "clink";
 	public static final String FAV_FNAME = "favourites";
+
+	public static final String BANNER_FNAME = "bigbanner.png";
 	
+	public static RSSItem bannerItem;
 	public static Context app_ctx;
 	
 	private static ArrayList<RSSItem> favourites;

@@ -1,17 +1,22 @@
 package com.vkassin;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
@@ -34,6 +39,36 @@ public class QAActivity extends ListActivity {
 		//listView.setFocusable(false);
 		
 		new getRSS().execute();
+		
+    	ImageView ban = (ImageView) this.findViewById(R.id.banner);
+    	ban.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				
+				//Log.i(TAG, "Click!");
+				RSSItem it = Common.bannerItem;
+				if(it != null){
+					String url = it.clink;
+					final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+					startActivity(intent);
+				}
+			}
+		});
+    	
+    	if(Common.bannerItem != null) {
+    		
+    		ban.setVisibility(View.VISIBLE);
+    		java.io.FileInputStream in;
+			try {
+				in = openFileInput(Common.BANNER_FNAME);
+	    		ban.setImageBitmap(BitmapFactory.decodeStream(in));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+    	else
+    		ban.setVisibility(View.GONE);
 	}
 
 	@Override
