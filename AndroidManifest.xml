@@ -22,6 +22,7 @@
 <activity android:name=".FavrActivity"></activity>
 <activity android:name=".PodActivity"></activity>
 <activity android:name=".SettActivity"></activity>
+<activity android:name=".AskActivity"></activity>
 
 </application>
 
