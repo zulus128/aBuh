@@ -36,9 +36,12 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.text.Html;
+import android.text.Spanned;
 import android.util.Log;
 
 import com.vkassin.Common.item_type;
@@ -269,5 +272,30 @@ public class Common {
 		}
 		
 		return errorMsg;
+	}
+	
+	static void sendMail(Context ctx, RSSItem item) {
+		
+		Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND); 
+		
+//		String aEmailList[] = { "user@fakehost.com","user2@fakehost.com" };  
+//		String aEmailCCList[] = { "user3@fakehost.com","user4@fakehost.com"};  
+//		String aEmailBCCList[] = { "user5@fakehost.com" };  
+//		  
+//		emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, aEmailList);  
+//		emailIntent.putExtra(android.content.Intent.EXTRA_CC, aEmailCCList);  
+//		emailIntent.putExtra(android.content.Intent.EXTRA_BCC, aEmailBCCList);  
+		  
+		Spanned ss = Html.fromHtml(item.getShortContent());
+		emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, ss);  
+		  
+		emailIntent.setType("text/plain");
+		//emailIntent.setType("text/html");
+		//emailIntent.setType("message/rfc822");
+		
+		ss = Html.fromHtml(item.fulltext);
+		emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, ss);  
+		  
+		ctx.startActivity(emailIntent); 
 	}
 }

@@ -15,10 +15,26 @@
             
         </activity>
 
-    <activity android:name=".NewsActivity"></activity>
+    <activity android:name=".NewsActivity">
+    </activity>
 <activity android:name=".QAActivity"></activity>
-<activity android:name=".NewsDetail"></activity>
-<activity android:name=".QADetail"></activity>
+
+<activity android:name=".NewsDetail">
+
+                <intent-filter>
+                	<action android:name="android.intent.action.SEND" />
+            	</intent-filter>
+
+</activity>
+
+<activity android:name=".QADetail">
+
+                <intent-filter>
+                	<action android:name="android.intent.action.SEND" />
+            	</intent-filter>
+
+</activity>
+
 <activity android:name=".FavrActivity"></activity>
 <activity android:name=".PodActivity"></activity>
 <activity android:name=".SettActivity"></activity>

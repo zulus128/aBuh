@@ -55,6 +55,8 @@ public class NewsDetail extends Activity {
 	    switch (item.getItemId()) {
 	        case R.id.menufavr: Common.addToFavr(rssItem);
 	                            break;
+	        case R.id.menuemail: Common.sendMail(this, rssItem);
+	        					break;
 	    }
 	    return true;
 	}
