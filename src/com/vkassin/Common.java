@@ -286,16 +286,19 @@ public class Common {
 //		emailIntent.putExtra(android.content.Intent.EXTRA_CC, aEmailCCList);  
 //		emailIntent.putExtra(android.content.Intent.EXTRA_BCC, aEmailBCCList);  
 		  
-		Spanned ss = Html.fromHtml(item.getShortContent());
-		emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, ss);  
+//		Spanned ss = Html.fromHtml(item.getShortTitle());
+//		String subj = item.getShortContent();//ss.toString();
+//		Log.i(TAG, "subj = " + subj);
+		emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, item.getShortTitle());  
 		  
 		emailIntent.setType("text/plain");
 		//emailIntent.setType("text/html");
 		//emailIntent.setType("message/rfc822");
 		
-		ss = Html.fromHtml(item.fulltext);
+		Spanned ss = Html.fromHtml(item.fulltext);
 		emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, ss);  
 		  
-		ctx.startActivity(emailIntent); 
+//		ctx.startActivity(emailIntent); 
+		ctx.startActivity(Intent.createChooser(emailIntent, ctx.getString(R.string.share)));
 	}
 }
