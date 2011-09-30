@@ -56,17 +56,14 @@ public final class R {
         public static final int TopNewsTitleTextView=0x7f060004;
         public static final int arrow=0x7f060006;
         public static final int banner=0x7f06000b;
-        public static final int group1=0x7f060024;
         public static final int line=0x7f060008;
         public static final int mainpic=0x7f060002;
-        public static final int menuask=0x7f06002b;
-        public static final int menudecr=0x7f060029;
-        public static final int menuemail=0x7f060025;
+        public static final int menuask=0x7f060028;
+        public static final int menudecr=0x7f060026;
         public static final int menufavr=0x7f060023;
-        public static final int menufb=0x7f060026;
-        public static final int menuincr=0x7f060028;
-        public static final int menurefr=0x7f06002a;
-        public static final int menutwitter=0x7f060027;
+        public static final int menuincr=0x7f060025;
+        public static final int menurefr=0x7f060027;
+        public static final int menushare=0x7f060024;
         public static final int webview=0x7f060000;
     }
     public static final class layout {
@@ -89,6 +86,8 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040000;
+        public static final int dialog_add=0x7f040002;
+        public static final int dialog_cancel=0x7f040003;
         public static final int share=0x7f040001;
     }
 }

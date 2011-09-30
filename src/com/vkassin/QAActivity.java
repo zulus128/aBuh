@@ -117,6 +117,7 @@ public class QAActivity extends ListActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
 	        case R.id.menuask: {
+	        	//Common.sendMail(this);
 	        	Intent i = new Intent(this, AskActivity.class);
 	        	startActivity(i);
                 break;

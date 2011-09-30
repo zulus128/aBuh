@@ -301,4 +301,12 @@ public class Common {
 //		ctx.startActivity(emailIntent); 
 		ctx.startActivity(Intent.createChooser(emailIntent, ctx.getString(R.string.share)));
 	}
+	static void sendMail(Context ctx) {
+		
+		Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND); 
+		emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "subj");  
+		emailIntent.setType("text/plain");
+		emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "text");  
+		ctx.startActivity(Intent.createChooser(emailIntent, ctx.getString(R.string.share)));
+	}
 }

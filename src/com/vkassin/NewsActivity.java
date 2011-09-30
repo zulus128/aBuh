@@ -15,7 +15,9 @@ import org.apache.http.util.ByteArrayBuffer;
 
 //import com.vkassin.Common.ApiException;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -312,7 +314,8 @@ public class NewsActivity extends Activity {
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    switch (item.getItemId()) {
+		
+		switch (item.getItemId()) {
 	        case R.id.menurefr: refresh();
 	                            break;
 	    }
