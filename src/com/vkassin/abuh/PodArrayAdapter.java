@@ -1,4 +1,4 @@
-package com.vkassin;
+package com.vkassin.abuh;
 
 import java.util.ArrayList;
 
@@ -15,13 +15,13 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class QAArrayAdapter extends ArrayAdapter<RSSItem> {
+public class PodArrayAdapter extends ArrayAdapter<RSSItem> {
 	private ArrayList<RSSItem> items;
 	private Context ctx;
 	private int resourceId;
 	private LinearLayout qaContent;
 	
-	public QAArrayAdapter(Context context, int resourceId, ArrayList<RSSItem> objects) {
+	public PodArrayAdapter(Context context, int resourceId, ArrayList<RSSItem> objects) {
 		super(context, resourceId, objects);
 		this.items = objects;
 		this.ctx = context;
@@ -36,13 +36,13 @@ public class QAArrayAdapter extends ArrayAdapter<RSSItem> {
     	
     	RSSItem item = getItems().get(position);
     	if (item != null) {
-    		TextView title = (TextView) layout.findViewById(R.id.QATitleTextView);
-    		TextView date = (TextView) layout.findViewById(R.id.QADateTextView);
-    		TextView full = (TextView) layout.findViewById(R.id.QAFullTextView);
+    		TextView title = (TextView) layout.findViewById(R.id.PodTitleTextView);
+//    		TextView date = (TextView) layout.findViewById(R.id.QADateTextView);
+    		TextView full = (TextView) layout.findViewById(R.id.PodFullTextView);
     		
     		title.setText(item.getShortTitle());
 //    		title.setText(item.title);
-    		date.setText(DateFormat.format("MM:dd", item.getPubDate()));
+    		//date.setText(DateFormat.format("MM:dd", item.getPubDate()));
     		
     		Spanned ss = Html.fromHtml(item.getShortContent());
     		full.setText(ss);

@@ -1,4 +1,4 @@
-package com.vkassin;
+package com.vkassin.abuh;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -8,8 +8,8 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import android.util.Log;
-import com.vkassin.RSSItem;
-import com.vkassin.Common.item_type;
+import com.vkassin.abuh.RSSItem;
+import com.vkassin.abuh.Common.item_type;
 
 public class RSSHandler extends DefaultHandler {
 	

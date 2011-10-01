@@ -1,4 +1,4 @@
-package com.vkassin;
+package com.vkassin.abuh;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -68,8 +68,9 @@ public class NewsDetail extends Activity {
 	    switch (item.getItemId()) {
 	        case R.id.menufavr: { 
 	        	
-	        	new AlertDialog.Builder(this)
-	        			.setTitle("Are you sure you want to exit?")
+	        	AlertDialog ad = new AlertDialog.Builder(this)
+    					//.setTitle("Внимание")
+	        			.setMessage(R.string.menu_favr)
 	        			.setCancelable(false)
 	        			.setPositiveButton(R.string.dialog_add, new DialogInterface.OnClickListener() {
 	        	           public void onClick(DialogInterface dialog, int id) {
@@ -83,10 +84,12 @@ public class NewsDetail extends Activity {
 	        	           }
 	        	       	})
 	        	       	.create();
+	        	ad.show();
 	        	
 	                            break;
 	        }
 	        case R.id.menushare: Common.sendMail(this, rssItem);
+//	        case R.id.menushare: Common.sendMail(this);
 	        					break;
 	        case R.id.menudecr: fontsize = (fontsize > 8)?fontsize - 2:fontsize; refresh();
 	        					break;

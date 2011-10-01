@@ -1,4 +1,4 @@
-package com.vkassin;
+package com.vkassin.abuh;
 
 import java.util.ArrayList;
 
@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class PodActivity extends ListActivity {
 
@@ -44,10 +45,17 @@ public class PodActivity extends ListActivity {
 	protected void onListItemClick(ListView l, View v, final int position, long id) {
 		super.onListItemClick(l, v, position, id);
 		
-		Log.i(TAG,"click");
-
 		RSSItem it = adapter.getItems().get(position);
 		String url = it.mplink;
+
+		Log.i(TAG,"call " + url);
+
+		if(url.length() < 5) {
+			
+			Toast.makeText(this, R.string.nomedia, Toast.LENGTH_SHORT).show();
+			return;
+		}
+		
 		final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
 		startActivity(intent);
 	}

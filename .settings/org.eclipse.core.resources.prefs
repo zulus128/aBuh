@@ -1,5 +1,7 @@
-#Sun Sep 25 11:53:43 ALMT 2011
+#Sat Oct 01 08:28:48 ALMT 2011
 eclipse.preferences.version=1
-encoding//src/com/vkassin/BuhWidget.java=UTF-8
-encoding//src/com/vkassin/FavrActivity.java=UTF-8
-encoding//src/com/vkassin/NewsActivity.java=UTF-8
+encoding//src/com/vkassin/abuh/BuhWidget.java=UTF-8
+encoding//src/com/vkassin/abuh/FavrActivity.java=UTF-8
+encoding//src/com/vkassin/abuh/NewsActivity.java=UTF-8
+encoding//src/com/vkassin/abuh/NewsDetail.java=UTF-8
+encoding//src/com/vkassin/abuh/QADetail.java=UTF-8

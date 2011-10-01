@@ -1,6 +1,8 @@
-package com.vkassin;
+package com.vkassin.abuh;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.Menu;
@@ -79,8 +81,28 @@ public class QADetail extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
-	        case R.id.menufavr: Common.addToFavr(rssItem);
-	                            break;
+        case R.id.menufavr: { 
+        	
+        	AlertDialog ad = new AlertDialog.Builder(this)
+					//.setTitle("Внимание")
+        			.setMessage(R.string.menu_favr)
+        			.setCancelable(false)
+        			.setPositiveButton(R.string.dialog_add, new DialogInterface.OnClickListener() {
+        	           public void onClick(DialogInterface dialog, int id) {
+        	        	   Common.addToFavr(rssItem); 
+        	        	   //MyActivity.this.finish();
+        	           }
+        			})
+        	       	.setNegativeButton(R.string.dialog_cancel, new DialogInterface.OnClickListener() {
+        	           public void onClick(DialogInterface dialog, int id) {
+        	                dialog.cancel();
+        	           }
+        	       	})
+        	       	.create();
+        	ad.show();
+        	
+                            break;
+        }
 	        case R.id.menushare: Common.sendMail(this, rssItem);
 								break;
 	        case R.id.menudecr: fontsize = (fontsize > 8)?fontsize - 2:fontsize; refresh();

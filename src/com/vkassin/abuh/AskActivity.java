@@ -1,4 +1,4 @@
-package com.vkassin;
+package com.vkassin.abuh;
 
 import android.app.Activity;
 import android.os.Bundle;

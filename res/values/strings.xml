@@ -2,7 +2,9 @@
 <resources>
     
     <string name="app_name">Бухгалтерия</string>
-    <string name="share">Отправить</string>
+    <string name="share"> Поделиться через:</string>
     <string name="dialog_add">Добавить</string>
     <string name="dialog_cancel">Отменить</string>
+    <string name="menu_favr">Добавить в избранное?</string>
+    <string name="nomedia">Нет звукового файла</string>
 </resources>

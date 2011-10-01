@@ -1,10 +1,10 @@
-package com.vkassin;
+package com.vkassin.abuh;
 
 import java.io.Serializable;
 import java.net.URL;
 import java.util.Date;
 
-import com.vkassin.Common.item_type;
+import com.vkassin.abuh.Common.item_type;
 
 public class RSSItem implements Serializable {
 
@@ -42,6 +42,10 @@ public class RSSItem implements Serializable {
 	
 	public String getShortContent() {
 		return description.length() > 100 ? description.substring(0, 97) + "..." : description;
+	}
+
+	public String getShortText() {
+		return fulltext.length() > 139 ? fulltext.substring(0, 136) + "..." : fulltext;
 	}
 
 	public Date getPubDate() {

@@ -1,4 +1,4 @@
-package com.vkassin;
+package com.vkassin.abuh;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import org.apache.http.util.ByteArrayBuffer;
 
-//import com.vkassin.Common.ApiException;
+//import com.vkassin.abuh.Common.ApiException;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -41,8 +41,8 @@ import android.widget.TextView;
 //import android.widget.ProgressBar;
 //import android.widget.Toast;
 
-import com.vkassin.NewsArrayAdapter;
-import com.vkassin.Common.item_type;
+import com.vkassin.abuh.NewsArrayAdapter;
+import com.vkassin.abuh.Common.item_type;
 
 public class NewsActivity extends Activity {
 

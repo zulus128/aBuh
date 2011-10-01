@@ -1,4 +1,4 @@
-package com.vkassin;
+package com.vkassin.abuh;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
@@ -44,7 +44,7 @@ import android.text.Html;
 import android.text.Spanned;
 import android.util.Log;
 
-import com.vkassin.Common.item_type;
+import com.vkassin.abuh.Common.item_type;
 
 public class Common {
 
@@ -294,19 +294,21 @@ public class Common {
 		emailIntent.setType("text/plain");
 		//emailIntent.setType("text/html");
 		//emailIntent.setType("message/rfc822");
+		//emailIntent.addCategory(android.content.Intent.CATEGORY_DEFAULT);
 		
-		Spanned ss = Html.fromHtml(item.fulltext);
-		emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, ss);  
+		Spanned ss = Html.fromHtml(item.fulltext /* item.getShortText()*/);
+		emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, item.mplink + " text: " + ss.toString());  
 		  
 //		ctx.startActivity(emailIntent); 
 		ctx.startActivity(Intent.createChooser(emailIntent, ctx.getString(R.string.share)));
 	}
-	static void sendMail(Context ctx) {
-		
-		Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND); 
-		emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "subj");  
-		emailIntent.setType("text/plain");
-		emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "text");  
-		ctx.startActivity(Intent.createChooser(emailIntent, ctx.getString(R.string.share)));
-	}
+	
+//	static void sendMail(Context ctx) {
+//		
+//		Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND); 
+//		emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "subj");  
+//		emailIntent.setType("text/plain");
+//		emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "text");  
+//		ctx.startActivity(Intent.createChooser(emailIntent, ctx.getString(R.string.share)));
+//	}
 }
