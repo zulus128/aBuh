@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:orientation="vertical"
+     android:layout_width="fill_parent"
+     android:layout_height="fill_parent"
+     >
+     <ImageView android:id="@+id/line" android:src="@drawable/ttt" android:layout_width="fill_parent" android:layout_height="wrap_content"
+></ImageView>
+     <TextView 
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:text="Приложение Бухгалтерия - это удобный и оперативный доступ к самой важной информации в сфере учета и налогообложения. При поддержке: портала buhgalteria.ru, журналов 'Расчет' и 'Практическая бухгалтерия'. Пишите нам: webeditor@buhgalteria.ru"
+         />
+         <ImageView android:id="@+id/line" android:src="@drawable/ttt" android:layout_width="fill_parent" android:layout_height="wrap_content"
+></ImageView>
+     <TextView 
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:text="Компания Мослайт специализируется на проектировании, разработке и дальнейшем сопровождении приложений для мобильных устройств, работающих на платформах  Apple iOS,  Google Android и Windows phone 7. www.moslight.com support@moslight.com +7 495 772 16 75"
+         />
+         <ImageView android:id="@+id/line" android:src="@drawable/ttt" android:layout_width="fill_parent" android:layout_height="wrap_content"
+></ImageView>
+
+ </LinearLayout>

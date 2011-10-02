@@ -9,7 +9,14 @@
          android:layout_width="fill_parent" 
          android:layout_height="1dp"
          android:layout_weight="0.87"
-          
+	android:dividerHeight="2px"
+	android:background="#ffffff"
+	android:choiceMode="singleChoice"
+	android:headerDividersEnabled="false"
+	android:footerDividersEnabled="true"
+	android:listSelector="@android:color/transparent"
+	android:cacheColorHint="@android:color/transparent"        
+	android:drawSelectorOnTop="true"  
          />
 
 <ImageView android:id="@+id/banner"

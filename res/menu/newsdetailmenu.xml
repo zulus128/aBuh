@@ -2,7 +2,8 @@
 <menu
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:title="Добавить в избранное" android:icon="@drawable/star" android:titleCondensed="В избранное" android:id="@+id/menufavr"></item>
-    <item android:title="Поделиться с друзьями" android:titleCondensed="Поделиться" android:id="@+id/menushare"></item><item android:icon="@drawable/wordbig" android:title="Увеличить шрифт" android:titleCondensed="Увеличить" android:id="@+id/menuincr"></item>
+    <item android:title="Поделиться с друзьями" android:titleCondensed="Поделиться" android:id="@+id/menushare"  android:icon="@android:drawable/ic_menu_share"></item>
+    <item android:icon="@drawable/wordbig" android:title="Увеличить шрифт" android:titleCondensed="Увеличить" android:id="@+id/menuincr"></item>
     <item android:icon="@drawable/word" android:title="Уменьшить шрифт" android:titleCondensed="Уменьшить" android:id="@+id/menudecr"></item>
     
     

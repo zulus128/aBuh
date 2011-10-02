@@ -26,6 +26,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -49,7 +50,7 @@ public class NewsActivity extends Activity {
 	private static final String TAG = "aBuh.NewsActivity"; 
 	private ListView list;
 	private NewsArrayAdapter adapter;
-	private RSSItem topitem;
+//	private RSSItem topitem;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,9 +67,15 @@ public class NewsActivity extends Activity {
 			
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				
+				if(Common.topnews == null)
+					return;
+				Common.news = adapter.getItems();
+				Common.curnews = adapter.getItems().get(arg2);
 				Intent i = new Intent(NewsActivity.this, NewsDetail.class);
-				RSSItem it = adapter.getItems().get(arg2);
-				i.putExtra("rssitem", it);
+//				RSSItem it = adapter.getItems().get(arg2);
+//				i.putExtra("rssitem", it);
+//				i.putExtra("topitem", topitem);
+//				i.putExtra("itemlist", adapter.getItems());
 				startActivity(i);
 				//Log.i(TAG, "row: "+arg2+" arg3: "+arg3);
 			}
@@ -87,7 +94,7 @@ public class NewsActivity extends Activity {
 					startActivity(intent);
 				}
 			}
-		});
+		});    	
     	
     	refresh();
     	
@@ -104,9 +111,16 @@ public class NewsActivity extends Activity {
     
     public boolean onTouchEvent(MotionEvent event) {
     	
-    	Log.i(TAG, "tap");
+		if(Common.topnews == null)
+			return true;
+
+//    	Log.i(TAG, "tap");
+		Common.news = adapter.getItems();
+
 		Intent i = new Intent(NewsActivity.this, NewsDetail.class);
-		i.putExtra("rssitem", topitem);
+//		i.putExtra("rssitem", topitem);
+//		i.putExtra("topitem", topitem);
+//		i.putExtra("itemlist", adapter.getItems());
 		startActivity(i);
     	return false;
     }
@@ -146,14 +160,14 @@ public class NewsActivity extends Activity {
 
         	if(result.size() > 0) {
         	
-        		topitem = result.get(0);
-            	if (topitem != null) {
+        		Common.topnews = result.get(0);
+            	if (Common.topnews != null) {
             		
             		TextView title = (TextView) NewsActivity.this.findViewById(R.id.TopNewsTitleTextView);
             		TextView rubr = (TextView) NewsActivity.this.findViewById(R.id.TopNewsRubricTextView);
             		
-            		title.setText(topitem.getShortTitle());
-            		rubr.setText(topitem.rubric);
+            		title.setText(Common.topnews.getShortTitle());
+            		rubr.setText(Common.topnews.rubric);
             		
             	}
         		//mainpicURL = item.imageUrl;
@@ -186,7 +200,7 @@ public class NewsActivity extends Activity {
 	                
     			try {
     				
-    				URLConnection ucon = topitem.imageUrl.openConnection();
+    				URLConnection ucon = Common.topnews.imageUrl.openConnection();
 					ucon.setUseCaches(true);
 					InputStream is = ucon.getInputStream();
 	                BufferedInputStream bis = new BufferedInputStream(is, is.available());
@@ -321,4 +335,6 @@ public class NewsActivity extends Activity {
 	    }
 	    return true;
 	}
+	
+	
 }

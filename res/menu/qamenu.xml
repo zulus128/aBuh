@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menuask" android:titleCondensed="Задать вопрос" android:icon="@drawable/note" android:title="Задать вопрос"></item>
+    <item android:id="@+id/menuask" android:titleCondensed="Задать вопрос" android:icon="@android:drawable/ic_menu_add" android:title="Задать вопрос"></item>
     
 </menu>

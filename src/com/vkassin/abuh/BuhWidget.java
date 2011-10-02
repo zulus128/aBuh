@@ -19,6 +19,7 @@ import android.widget.TextView;
 public class BuhWidget extends TabActivity {
 
 	private static final String TAG = "aBuh.BuhWidget"; 
+	private static final int textsize = 10;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		
@@ -62,29 +63,39 @@ public class BuhWidget extends TabActivity {
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
 
-/*	    intent = new Intent().setClass(this, SettActivity.class);
+	    intent = new Intent().setClass(this, SettActivity.class);
 	    spec = tabHost.newTabSpec("tsett").setIndicator("Настройки",
 	                      res.getDrawable(R.drawable.gear))
 	                  .setContent(intent);
 	    tabHost.addTab(spec);
-	*/  
+	  
 	    LinearLayout ll = (LinearLayout) tabHost.getChildAt(0);
 	    TabWidget tw = (TabWidget) ll.getChildAt(0);
 	    RelativeLayout rllf = (RelativeLayout) tw.getChildAt(0);
+//	    rllf.setBackgroundColor(0xFF0000FF);
 	    TextView lf = (TextView) rllf.getChildAt(1);
-	    lf.setTextSize(12);
+	    lf.setTextSize(textsize);
 	    lf.setPadding(0, 0, 0, 2);
 	    rllf = (RelativeLayout) tw.getChildAt(1);
+//	    rllf.setBackgroundColor(0xFF0000FF);
 	    lf = (TextView) rllf.getChildAt(1);
-	    lf.setTextSize(12);
+	    lf.setTextSize(textsize);
 	    lf.setPadding(0, 0, 0, 2);
 	    rllf = (RelativeLayout) tw.getChildAt(2);
+//	    rllf.setBackgroundColor(0xFF0000FF);
 	    lf = (TextView) rllf.getChildAt(1);
-	    lf.setTextSize(12);
+	    lf.setTextSize(textsize);
 	    lf.setPadding(0, 0, 0, 2);
 	    rllf = (RelativeLayout) tw.getChildAt(3);
+//	    rllf.setBackgroundColor(0xFF0000FF);
 	    lf = (TextView) rllf.getChildAt(1);
-	    lf.setTextSize(12);
+	    lf.setTextSize(textsize);
+	    lf.setPadding(0, 0, 0, 2);
+
+	    rllf = (RelativeLayout) tw.getChildAt(4);
+//	    rllf.setBackgroundColor(0xFF0000FF);
+	    lf = (TextView) rllf.getChildAt(1);
+	    lf.setTextSize(textsize);
 	    lf.setPadding(0, 0, 0, 2);
 	    
 	    tabHost.setCurrentTab(0);

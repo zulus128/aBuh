@@ -9,15 +9,18 @@ android:orientation="horizontal"
 android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_gravity="center_horizontal"
 android:paddingBottom="2dp"
 android:layout_weight="1"
-
 >
+<!--
+android:background="@layout/rowselector"
 
+-->
 <ImageView android:id="@+id/mainpic"
 android:layout_width="fill_parent" android:layout_height="wrap_content"
 android:scaleType="fitStart"
 android:layout_weight="3"
 android:layout_gravity="left"
 ></ImageView>
+
 <!--<ProgressBar android:layout_weight="3" android:layout_width="wrap_content" android:id="@+id/progressBar1" android:layout_height="wrap_content" style="?android:attr/progressBarStyleLarge"></ProgressBar>-->
 
 
@@ -51,7 +54,7 @@ android:id="@+id/TopNewsRubricTextView"></TextView>
 
 </LinearLayout>
 
-</LinearLayout>
+</LinearLayout>-->
 
 <ImageView android:id="@+id/line" android:src="@drawable/ttt" android:layout_width="fill_parent" android:layout_height="wrap_content"
 ></ImageView>

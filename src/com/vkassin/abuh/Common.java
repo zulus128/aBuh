@@ -83,6 +83,10 @@ public class Common {
 	public static RSSItem bannerItem;
 	public static Context app_ctx;
 	
+	public static ArrayList<RSSItem> news;
+	public static RSSItem topnews;
+	public static RSSItem curnews;
+	
 	private static ArrayList<RSSItem> favourites;
 	
 	public static void addToFavr(RSSItem item) {

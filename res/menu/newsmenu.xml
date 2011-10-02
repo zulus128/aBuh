@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/menurefr" android:titleCondensed="Обновить" android:title="Обновить" android:icon="@drawable/redo"></item>
+    <item android:id="@+id/menurefr" android:titleCondensed="Обновить" android:title="Обновить" android:icon="@android:drawable/ic_popup_sync"></item>
     
 </menu>
