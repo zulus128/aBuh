@@ -110,6 +110,8 @@ public class NewsActivity extends Activity {
     	
     	NewsDetail.resetViewsList();
 
+    	QADetail.resetViewsList();
+
     }
     
     public boolean onTouchEvent(MotionEvent event) {

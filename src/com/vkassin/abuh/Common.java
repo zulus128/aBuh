@@ -2,8 +2,6 @@ package com.vkassin.abuh;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -23,12 +21,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.ByteArrayBuffer;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.InputSource;
@@ -37,14 +29,9 @@ import org.xml.sax.XMLReader;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.text.Html;
 import android.text.Spanned;
 import android.util.Log;
-
-import com.vkassin.abuh.Common.item_type;
 
 public class Common {
 
@@ -86,7 +73,10 @@ public class Common {
 	public static ArrayList<RSSItem> news;
 	public static RSSItem topnews;
 	public static RSSItem curnews;
-	
+
+	public static ArrayList<RSSItem> qas;
+	public static RSSItem curqa;
+
 	private static ArrayList<RSSItem> favourites;
 	
 	public static void addToFavr(RSSItem item) {

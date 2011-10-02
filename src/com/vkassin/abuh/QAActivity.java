@@ -79,9 +79,13 @@ public class QAActivity extends ListActivity {
 		super.onListItemClick(l, v, position, id);
 		
 		//Log.i(TAG,"click");
+		Common.qas = adapter.getItems();
+		Common.curqa = adapter.getItems().get(position);
+
 		Intent i = new Intent(QAActivity.this, QADetail.class);
-		RSSItem it = adapter.getItems().get(position);
-		i.putExtra("rssitem", it);
+//		RSSItem it = adapter.getItems().get(position);
+//		i.putExtra("rssitem", it);
+		QADetail.prepare();
 		startActivity(i);
 
 	}

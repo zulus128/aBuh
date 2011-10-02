@@ -17,8 +17,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -30,91 +28,14 @@ public class NewsDetail extends Activity {
 	
 	private static final String TAG = "aBuh.NewsDetail"; 
 	private GestureDetector gestureDetector;
-	
-//	private TextView newsTitle;
-//	private TextView newsDate;
-//	private LinearLayout newsContent;
-//	private RSSItem rssItem;
-	
 	private static int fontsize = 16;
-//	private WebView webview;
-
 	private float downXValue;
 	private float downYValue;
-//    ViewFlipper vf;
-//	LayoutInflater vi;
-
-	
 	private static ViewFlipper vf;
 	private static ArrayList<View> views;
 	private static int curr;
 	
-/*	public boolean dispatchTouchEvent(MotionEvent event) {
-	
-//		Log.i(TAG, "dispatchTouchEvent");
-//        return true;
-//	}
-//	public boolean onTouch(View v, MotionEvent event) {
-	    
-//		Log.i(TAG, "onTouch");
-		// Get the action that was done on this touch event
-        switch (event.getAction())
-        {
-            case MotionEvent.ACTION_DOWN:
-            {
-                // store the X value when the user's finger was pressed down
-                downXValue = event.getX();
-                downXValue = event.getY();
-//                Log.i(TAG, "ACTION_DOWN");
-                break;
-            }
-
-            case MotionEvent.ACTION_UP:
-            {
-                // Get the X value when the user released his/her finger
-                float currentX = event.getX();  
-                float currentY = event.getY();   
-                
-                Log.i(TAG, "ACTION_UP " + Math.abs(currentY - downYValue));
-
-//                if(Math.abs(currentY - downYValue) > 140)
-//                	return true;
-                
-                // going backwards: pushing stuff to the right
-                if (downXValue < currentX)
-                {
-//                    // Get a reference to the ViewFlipper
-                     ViewFlipper vf = (ViewFlipper) findViewById(R.id.details);
-//                     // Set the animation
-//                      vf.setAnimation(AnimationUtils.loadAnimation(this, R.anim.push_left_out));
-                      vf.setInAnimation(this, R.anim.slide_in_left);
-                      vf.setOutAnimation(this, R.anim.slide_out_right);
-//                      // Flip!
-                      vf.showPrevious();
-                }
-
-                // going forwards: pushing stuff to the left
-                if (downXValue > currentX)
-                {
-//                    // Get a reference to the ViewFlipper
-                    ViewFlipper vf = (ViewFlipper) findViewById(R.id.details);
-//                     // Set the animation
-//                     vf.setInAnimation(AnimationUtils.loadAnimation(this, android.R.anim.slide_out_right));
-                    vf.setInAnimation(this, R.anim.slide_in_right);
-                    vf.setOutAnimation(this, R.anim.slide_out_left);
-//                      // Flip!
-                     vf.showNext();
-                }
-                break;
-            }
-        }
-
-        // if you return false, these actions will not be recorded
-        return false;
-	}
-  */
 	@Override
-//	public boolean onTouchEvent(MotionEvent event) {
 	public boolean dispatchTouchEvent(MotionEvent event) {
 		super.dispatchTouchEvent(event);
 		
@@ -127,27 +48,13 @@ public class NewsDetail extends Activity {
 	private static void flipadd(RSSItem item) {
 		
 		LayoutInflater vi = (LayoutInflater)Common.app_ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
         LinearLayout flipdetail = (LinearLayout)vi.inflate(R.layout.flipdetail, null);
         
         TextView newsTitle = (TextView)flipdetail.findViewById(R.id.NewsTitle);
         TextView newsDate = (TextView)flipdetail.findViewById(R.id.NewsDate);
        
-//        LinearLayout newsContent = (LinearLayout)flipdetail.findViewById(R.id.NewsWebLinearLayout);
-        
         newsTitle.setText(item.title);
         newsDate.setText(DateFormat.format("yyyy-MM-dd", item.getPubDate()));
-
-//        WebView webview = new WebView(this);
-       
-//        WebView webview = (WebView)flipdetail.findViewById(R.id.webView1);
-        
-//        String content = "<html><head><style type=\"text/css\">body {margin: 0px} img {max-width: 100%;}" +
-//    	"body {font-family: \"helvetica\"; font-size: " + fontsize + ";}\n" +
-//    	"</style></head>" + "<body>" + item.fulltext + "</body></html>";
-//        webview.loadDataWithBaseURL(null, content, "text/html", "utf-8", "about:blank");       
-        
-//        newsContent.addView(webview);
         
         views.add(flipdetail);
 	}
@@ -188,45 +95,19 @@ public class NewsDetail extends Activity {
     	
         if(vf != null)
         	vf.removeAllViews();
-//        else
-        	vf = (ViewFlipper)this.findViewById(R.id.details);
-        
-//        vf.removeAllViews();
-        
-//        flipadd(Common.topnews);
+
+        vf = (ViewFlipper)this.findViewById(R.id.details);
         
         for(View v:views)
         	vf.addView(v);
         
-//        TextView newsTitle = (TextView)this.findViewById(R.id.NewsTitle);
-//        TextView newsDate = (TextView)this.findViewById(R.id.NewsDate);
-//       
-//        LinearLayout newsContent = (LinearLayout)this.findViewById(R.id.NewsWebLinearLayout);
-//        
-//        newsTitle.setText(Common.topnews.title);
-//        newsDate.setText(DateFormat.format("yyyy-MM-dd", Common.topnews.getPubDate()));
-//
-//        WebView webview = new WebView(this);
-//       
-//        String content = "<html><head><style type=\"text/css\">body {margin: 0px} img {max-width: 100%;}" +
-//    	"body {font-family: \"helvetica\"; font-size: " + fontsize + ";}\n" +
-//    	"</style></head>" + "<body>" + Common.topnews.fulltext + "</body></html>";
-//        webview.loadDataWithBaseURL(null, content, "text/html", "utf-8", "about:blank");       
-//        
-//        newsContent.addView(webview);
-        
-        //ArrayList<RSSItem> list = (ArrayList<RSSItem>)this.getIntent().getExtras().get("itemlist");
         curr = 0;
         
-//        for(RSSItem i : Common.news) {
         for(int i = 0; i < Common.news.size(); i++) {
         
             RSSItem it = Common.news.get(i);
-//        	flipadd(it);
-        
             if(Common.curnews.title.equals(it.title))
             	curr = i + 1;
-
         }
 
         vf.setDisplayedChild(curr);
@@ -247,6 +128,9 @@ public class NewsDetail extends Activity {
         vf.setOutAnimation(this, R.anim.slide_out_left);
 //          // Flip!
         curr++;
+        if(curr >= Common.news.size())
+        	curr = 0;
+        
         LinearLayout fd = (LinearLayout)views.get(curr);
         ScrollView sv = (ScrollView)fd.findViewById(R.id.ScrollView01);
         sv.fullScroll(View.FOCUS_UP);
@@ -263,7 +147,11 @@ public class NewsDetail extends Activity {
            vf.setInAnimation(this, R.anim.slide_in_left);
            vf.setOutAnimation(this, R.anim.slide_out_right);
 //           // Flip!
+           
            curr--;
+           if(curr < 0)
+              	curr = Common.news.size() - 1;
+
            LinearLayout fd = (LinearLayout)views.get(curr);
            ScrollView sv = (ScrollView)fd.findViewById(R.id.ScrollView01);
            sv.fullScroll(View.FOCUS_UP);
@@ -295,13 +183,13 @@ try {
 //  Log.e(TAG, "vel = "+velocityX);
   
   // Left swipe
-  if (diff > SWIPE_MIN_DISTANCE
-  && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+  if ((diff > SWIPE_MIN_DISTANCE)
+  && (Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY)) {
      NewsDetail.this.onLeftSwipe();
 
   // Right swipe
-  } else if (diff < -SWIPE_MIN_DISTANCE
-  && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+  } else if ((diff < -SWIPE_MIN_DISTANCE)
+  && (Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY)) {
 	  NewsDetail.this.onRightSwipe();
   }
 } catch (Exception e) {
