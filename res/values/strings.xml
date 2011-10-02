@@ -7,4 +7,5 @@
     <string name="dialog_cancel">Отменить</string>
     <string name="menu_favr">Добавить в избранное?</string>
     <string name="nomedia">Нет звукового файла</string>
+    <string name="alreadyfavr">Уже в избранном!</string>
 </resources>

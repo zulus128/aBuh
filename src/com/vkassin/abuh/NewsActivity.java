@@ -76,6 +76,7 @@ public class NewsActivity extends Activity {
 //				i.putExtra("rssitem", it);
 //				i.putExtra("topitem", topitem);
 //				i.putExtra("itemlist", adapter.getItems());
+				NewsDetail.prepare();
 				startActivity(i);
 				//Log.i(TAG, "row: "+arg2+" arg3: "+arg3);
 			}
@@ -106,6 +107,8 @@ public class NewsActivity extends Activity {
     	new getRSS().execute();
     	new getMainNews().execute();
     	new getBanner().execute();
+    	
+    	NewsDetail.resetViewsList();
 
     }
     
@@ -121,6 +124,8 @@ public class NewsActivity extends Activity {
 //		i.putExtra("rssitem", topitem);
 //		i.putExtra("topitem", topitem);
 //		i.putExtra("itemlist", adapter.getItems());
+		Common.curnews = Common.topnews;
+		NewsDetail.prepare();
 		startActivity(i);
     	return false;
     }

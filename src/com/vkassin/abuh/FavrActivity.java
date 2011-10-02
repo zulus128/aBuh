@@ -46,7 +46,8 @@ public class FavrActivity extends ListActivity {
 		
 		//Log.i(TAG,"click");
 		RSSItem it = adapter.getItems().get(position);
-		Intent i = new Intent(FavrActivity.this, (it.type == item_type.IT_QA)? QADetail.class : NewsDetail.class);
+//		Intent i = new Intent(FavrActivity.this, (it.type == item_type.IT_QA)? QADetail.class : NewsDetail.class);
+		Intent i = new Intent(FavrActivity.this, FavrDetail.class);
 		i.putExtra("rssitem", it);
 		startActivity(i);
 
