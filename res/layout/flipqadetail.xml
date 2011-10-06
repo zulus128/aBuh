@@ -1,41 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:id="@+id/NewsDetailLayout4"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" android:orientation="vertical"
-    >
-    
-<ScrollView android:id="@+id/ScrollView01" android:layout_height="fill_parent" android:layout_width="fill_parent" android:background="#FFFFFF">
-<LinearLayout android:id="@+id/QAItem" android:orientation="vertical" android:paddingLeft="10px" android:paddingRight="10px" android:layout_width="fill_parent" android:layout_height="fill_parent">
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nyhetsrubrik" android:id="@+id/QATitle" android:textColor="#122137" android:textStyle="bold" android:textSize="21px"></TextView>
-<TextView android:text="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/QADate" android:textColor="#959595" android:textSize="11px" android:layout_marginTop="5px"></TextView>
+	android:id="@+id/NewsDetailLayout4" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:orientation="vertical">
 
-<LinearLayout android:id="@+id/QAWebLinearLayout6" android:layout_height="fill_parent" android:layout_width="fill_parent" android:layout_marginTop="4px">
+	<ScrollView android:id="@+id/ScrollView01"
+		android:layout_height="fill_parent" android:layout_width="fill_parent"
+		android:background="#FFFFFF">
+		<LinearLayout android:id="@+id/QAItem"
+			android:orientation="vertical" android:paddingLeft="10px"
+			android:paddingRight="10px" android:layout_width="fill_parent"
+			android:layout_height="fill_parent">
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:text="Nyhetsrubrik"
+				android:id="@+id/QATitle" android:textColor="#122137"
+				android:textStyle="bold" android:textSize="21px"></TextView>
+			<TextView android:text="@+id/TextView01"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:id="@+id/QADate" android:textColor="#959595"
+				android:textSize="11px" android:layout_marginTop="5px"></TextView>
 
-<!--<android.webkit.WebView android:id="@+id/webView3" android:layout_width="fill_parent" android:layout_height="fill_parent"></android.webkit.WebView>-->
+			<LinearLayout android:id="@+id/QAWebLinearLayout6"
+				android:layout_height="fill_parent" android:layout_width="fill_parent"
+				android:layout_marginTop="4px">
 
-<TextView android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/tv1"
-android:textStyle="italic" android:textColor="#000000" android:background="#ffffff"
->
-</TextView>
+				<!--<android.webkit.WebView android:id="@+id/webView3" android:layout_width="fill_parent" 
+					android:layout_height="fill_parent"></android.webkit.WebView> -->
+
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="fill_parent" android:id="@+id/tv1"
+					android:textStyle="italic" android:textColor="#000000"
+					android:background="#ffffff">
+				</TextView>
 
 
-</LinearLayout>
+			</LinearLayout>
 
-<ImageView android:id="@+id/line" android:src="@drawable/ttt" android:layout_width="wrap_content" android:layout_height="wrap_content"
-></ImageView>
+			<ImageView android:id="@+id/line" android:src="@drawable/ttt"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"></ImageView>
 
-<LinearLayout android:id="@+id/QAWebLinearLayout7" android:layout_height="fill_parent" android:layout_width="fill_parent" android:layout_marginTop="4px">
+			<LinearLayout android:id="@+id/QAWebLinearLayout7"
+				android:layout_height="fill_parent" android:layout_width="fill_parent"
+				android:layout_marginTop="4px">
 
- <!--<android.webkit.WebView android:id="@+id/webView4" android:layout_width="fill_parent" android:layout_height="fill_parent"></android.webkit.WebView>-->
+				<!--<android.webkit.WebView android:id="@+id/webView4" android:layout_width="fill_parent" 
+					android:layout_height="fill_parent"></android.webkit.WebView> -->
 
-<TextView android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/tv2"
-android:textColor="#000000" android:background="#ffffff"
->
-</TextView>
+				<TextView android:layout_width="fill_parent"
+					android:layout_height="fill_parent" android:id="@+id/tv2"
+					android:textColor="#000000" android:background="#ffffff">
+				</TextView>
 
-</LinearLayout>
+			</LinearLayout>
 
-</LinearLayout>
-</ScrollView>
+		</LinearLayout>
+	</ScrollView>
 </LinearLayout>

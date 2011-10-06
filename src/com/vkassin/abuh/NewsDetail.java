@@ -7,6 +7,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -205,13 +207,17 @@ return false;
        
     	LinearLayout fd = (LinearLayout)views.get(curr);
     	
-        WebView webview = (WebView)fd.findViewById(R.id.webView1);
-        
-        String content = "<html><head><style type=\"text/css\">body {margin: 0px} img {max-width: 100%;}" +
-    	"body {font-family: \"helvetica\"; font-size: " + fontsize + ";}\n" +
-    	"</style></head>" + "<body>" + this.getCurrentItem().fulltext + "</body></html>";
-        webview.loadDataWithBaseURL(null, content, "text/html", "utf-8", "about:blank");       
+//        WebView webview = (WebView)fd.findViewById(R.id.webView1);
+//        
+//        String content = "<html><head><style type=\"text/css\">body {margin: 0px} img {max-width: 100%;}" +
+//    	"body {font-family: \"helvetica\"; font-size: " + fontsize + ";}\n" +
+//    	"</style></head>" + "<body>" + this.getCurrentItem().fulltext + "</body></html>";
+//        webview.loadDataWithBaseURL(null, content, "text/html", "utf-8", "about:blank");       
 
+        TextView tv = (TextView) fd.findViewById(R.id.tv);
+		Spanned ss = Html.fromHtml(getCurrentItem().fulltext);
+		tv.setText(ss);
+		tv.setTextSize(fontsize);
 
     }
     
