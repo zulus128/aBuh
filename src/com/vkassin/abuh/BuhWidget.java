@@ -8,6 +8,7 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -19,7 +20,7 @@ import android.widget.TextView;
 public class BuhWidget extends TabActivity {
 
 	private static final String TAG = "aBuh.BuhWidget"; 
-	private static final int textsize = 10;
+	private static final float textsize = 9.5f;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		
@@ -80,6 +81,8 @@ public class BuhWidget extends TabActivity {
 //	    rllf.setBackgroundColor(0xFF0000FF);
 	    lf = (TextView) rllf.getChildAt(1);
 	    lf.setTextSize(textsize);
+//	    lf.setLines(2);
+//	    lf.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
 	    lf.setPadding(0, 0, 0, 2);
 	    rllf = (RelativeLayout) tw.getChildAt(2);
 //	    rllf.setBackgroundColor(0xFF0000FF);

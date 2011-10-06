@@ -116,6 +116,8 @@ public class NewsDetail extends Activity {
         gestureDetector = new GestureDetector(
                 new SwipeGestureDetector());
         
+        setTitle("Новости");
+        
     }
  
     private void onLeftSwipe() {

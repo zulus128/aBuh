@@ -120,6 +120,8 @@ public class QADetail extends Activity {
         
         gestureDetector = new GestureDetector(
                 new SwipeGestureDetector());
+        
+        setTitle("Вопрос-ответ");
     }
  
     private void onLeftSwipe() {
