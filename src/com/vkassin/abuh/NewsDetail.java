@@ -1,11 +1,13 @@
 package com.vkassin.abuh;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
@@ -20,6 +22,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -50,14 +53,27 @@ public class NewsDetail extends Activity {
 	private static void flipadd(RSSItem item) {
 		
 		LayoutInflater vi = (LayoutInflater)Common.app_ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        LinearLayout flipdetail = (LinearLayout)vi.inflate(R.layout.flipdetail, null);
+
+		LinearLayout flipdetail;
+		
+		if(item.type == Common.item_type.IT_REGULARNEWS)
+			flipdetail = (LinearLayout)vi.inflate(R.layout.flipdetail, null);
+		else {
+
+			flipdetail = (LinearLayout)vi.inflate(R.layout.flipmaindetail, null);
+	        ImageView toppic = (ImageView)flipdetail.findViewById(R.id.mainpic1);
+        	if(Common.mainpic != null)
+        		toppic.setImageBitmap(Common.mainpic);
+
+		}
         
         TextView newsTitle = (TextView)flipdetail.findViewById(R.id.NewsTitle);
         TextView newsDate = (TextView)flipdetail.findViewById(R.id.NewsDate);
        
         newsTitle.setText(item.title);
-        newsDate.setText(DateFormat.format("yyyy-MM-dd", item.getPubDate()));
-        
+//        newsDate.setText(DateFormat.format("yyyy-MM-dd", item.getPubDate()));
+        newsDate.setText(item.rubric);
+                	
         views.add(flipdetail);
 	}
 	
@@ -135,11 +151,17 @@ public class NewsDetail extends Activity {
         if(curr >= Common.news.size())
         	curr = 0;
         
-        LinearLayout fd = (LinearLayout)views.get(curr);
+//        LinearLayout fd = (LinearLayout)views.get(curr);
+//        ScrollView sv = (ScrollView)fd.findViewById(R.id.ScrollView01);
+//        sv.fullScroll(View.FOCUS_UP);
+//        refresh();
+        vf.showNext();
+        LinearLayout fd = (LinearLayout)vf.getCurrentView();
         ScrollView sv = (ScrollView)fd.findViewById(R.id.ScrollView01);
         sv.fullScroll(View.FOCUS_UP);
-         vf.showNext();
-         refresh();
+        refresh();
+        
+        
       }
 
       private void onRightSwipe() {
@@ -156,11 +178,15 @@ public class NewsDetail extends Activity {
            if(curr < 0)
               	curr = Common.news.size() - 1;
 
-           LinearLayout fd = (LinearLayout)views.get(curr);
+//           LinearLayout fd = (LinearLayout)views.get(curr);
+//           ScrollView sv = (ScrollView)fd.findViewById(R.id.ScrollView01);
+//           sv.fullScroll(View.FOCUS_UP);
+           vf.showPrevious();
+           LinearLayout fd = (LinearLayout)vf.getCurrentView();
            ScrollView sv = (ScrollView)fd.findViewById(R.id.ScrollView01);
            sv.fullScroll(View.FOCUS_UP);
-           vf.showPrevious();
            refresh();
+
       }
       
     private class SwipeGestureDetector 
@@ -205,7 +231,9 @@ return false;
       
     private void refresh() {
        
-    	LinearLayout fd = (LinearLayout)views.get(curr);
+//    	LinearLayout fd = (LinearLayout)views.get(curr);
+        LinearLayout fd = (LinearLayout)vf.getCurrentView();
+
     	
 //        WebView webview = (WebView)fd.findViewById(R.id.webView1);
 //        

@@ -9,7 +9,9 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import org.apache.http.util.ByteArrayBuffer;
 
@@ -51,6 +53,8 @@ public class NewsActivity extends Activity {
 	private ListView list;
 	private NewsArrayAdapter adapter;
 //	private RSSItem topitem;
+	private ProgressBar pb;
+	private TextView refreshText;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,6 +63,8 @@ public class NewsActivity extends Activity {
         setContentView(R.layout.news);
         
         list = (ListView)this.findViewById(R.id.NewsList);
+        pb = (ProgressBar)findViewById(R.id.ProgressBar01);
+        refreshText = (TextView)findViewById(R.id.TopTextRefr);
         
     	adapter = new NewsArrayAdapter(this, R.layout.newsitem, new ArrayList<RSSItem>());
     	list.setAdapter(adapter);
@@ -104,6 +110,8 @@ public class NewsActivity extends Activity {
     
     private void refresh() {
     	
+		pb.setVisibility(View.VISIBLE);
+
     	new getRSS().execute();
     	new getMainNews().execute();
     	new getBanner().execute();
@@ -136,7 +144,8 @@ public class NewsActivity extends Activity {
 
     	@Override
 		protected ArrayList<RSSItem> doInBackground(Context... params) {
-			ArrayList<RSSItem> rssItems = Common.getNews();
+    					
+    		ArrayList<RSSItem> rssItems = Common.getNews();
             return rssItems;
 		}
     	
@@ -147,6 +156,13 @@ public class NewsActivity extends Activity {
 
         protected void onPostExecute(final ArrayList<RSSItem> result) {
 
+    		pb.setVisibility(View.GONE);
+    		
+    		String sformat = "Обновлено MM.dd в HH:mm";
+    		
+    		Calendar cal = Calendar.getInstance();
+    		SimpleDateFormat sdf = new SimpleDateFormat(sformat);
+    		refreshText.setText(sdf.format(cal.getTime()));
         	adapter.setItems(result);
 			adapter.notifyDataSetChanged();
         }
@@ -172,7 +188,9 @@ public class NewsActivity extends Activity {
             		
             		TextView title = (TextView) NewsActivity.this.findViewById(R.id.TopNewsTitleTextView);
             		TextView rubr = (TextView) NewsActivity.this.findViewById(R.id.TopNewsRubricTextView);
+            		ImageView imrubr = (ImageView) NewsActivity.this.findViewById(R.id.top_arrow);
             		
+            		imrubr.setVisibility(View.VISIBLE);
             		title.setText(Common.topnews.getShortTitle());
             		rubr.setText(Common.topnews.rubric);
             		
@@ -220,7 +238,7 @@ public class NewsActivity extends Activity {
 	                    
 	                    img = BitmapFactory.decodeByteArray(baf.toByteArray(), 0, baf.length());
 	
-	                    fOut = NewsActivity.this.openFileOutput("mainpic.png", Context.MODE_PRIVATE);
+	                    fOut = NewsActivity.this.openFileOutput(Common.MAINPIC_FNAME, Context.MODE_PRIVATE);
 	                    fOut.write(baf.toByteArray());
 	                    fOut.flush();
 	                    fOut.close();
@@ -232,6 +250,7 @@ public class NewsActivity extends Activity {
 					}
     		}
 			
+    		Common.mainpic = img;
             return img;
 		}
     	

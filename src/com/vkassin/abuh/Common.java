@@ -29,6 +29,7 @@ import org.xml.sax.XMLReader;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.text.Html;
 import android.text.Spanned;
 import android.util.Log;
@@ -66,6 +67,8 @@ public class Common {
 	public static final String FAV_FNAME = "favourites";
 
 	public static final String BANNER_FNAME = "bigbanner.png";
+	public static final String MAINPIC_FNAME = "mainpic.png";
+	public static Bitmap mainpic;
 	
 	public static RSSItem bannerItem;
 	public static Context app_ctx;

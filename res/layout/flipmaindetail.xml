@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/NewsDetailLayout2" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:orientation="vertical">
+
+	<ScrollView android:id="@+id/ScrollView01"
+		android:layout_height="fill_parent" android:layout_width="fill_parent"
+		android:background="#FFFFFF">
+		<LinearLayout android:id="@+id/NewsImageItem"
+			android:orientation="vertical" android:paddingLeft="3px"
+			android:paddingRight="3px" android:layout_width="fill_parent"
+			android:layout_height="fill_parent">
+
+			<LinearLayout android:id="@+id/NewsImageItem"
+				android:orientation="horizontal" android:layout_width="fill_parent"
+				android:layout_height="fill_parent">
+
+				<ImageView android:id="@+id/mainpic1"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:scaleType="fitStart" android:layout_gravity="left"
+					android:layout_weight="0.28"></ImageView>
+
+				<LinearLayout android:id="@+id/NewsItem"
+					android:orientation="vertical" android:layout_width="wrap_content"
+					android:paddingLeft="5px" android:layout_height="wrap_content"
+					android:layout_weight="0.72">
+					<TextView android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:text="Nyhetsrubrik"
+						android:id="@+id/NewsTitle" android:textColor="#122137"
+						android:textStyle="bold" android:textSize="19px"></TextView>
+					<LinearLayout android:id="@+id/LinearLayout04"
+						android:orientation="horizontal" android:layout_height="wrap_content"
+						android:layout_width="fill_parent">
+
+						<ImageView android:id="@+id/tarrow" android:src="@drawable/arrow"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							></ImageView>
+
+						<TextView android:layout_width="fill_parent"
+							android:layout_height="wrap_content" android:textSize="12px"
+							android:paddingLeft="3dp" android:textColor="#000000" android:id="@+id/NewsDate"></TextView>
+
+					</LinearLayout>
+				</LinearLayout>
+			</LinearLayout>
+
+			<TextView android:layout_width="fill_parent"
+				android:layout_height="fill_parent" android:id="@+id/tv"
+				android:textColor="#000000" android:background="#ffffff"
+				android:layout_weight="1"
+				>
+			</TextView>
+
+		</LinearLayout>
+
+	</ScrollView>
+</LinearLayout>

@@ -138,12 +138,16 @@ public class QADetail extends Activity {
         if(curr >= Common.qas.size())
         	curr = 0;
         
-        LinearLayout fd = (LinearLayout)views.get(curr);
+//        LinearLayout fd = (LinearLayout)views.get(curr);
+//        ScrollView sv = (ScrollView)fd.findViewById(R.id.ScrollView01);
+//        sv.fullScroll(View.FOCUS_UP);
+//        refresh();
+        vf.showNext();
+        LinearLayout fd = (LinearLayout)vf.getCurrentView();
         ScrollView sv = (ScrollView)fd.findViewById(R.id.ScrollView01);
         sv.fullScroll(View.FOCUS_UP);
         refresh();
-        vf.showNext();
-//         refresh();
+
       }
 
       private void onRightSwipe() {
@@ -160,11 +164,16 @@ public class QADetail extends Activity {
            if(curr < 0)
            	curr = Common.qas.size() - 1;
            
-           LinearLayout fd = (LinearLayout)views.get(curr);
+//           LinearLayout fd = (LinearLayout)views.get(curr);
+//           ScrollView sv = (ScrollView)fd.findViewById(R.id.ScrollView01);
+//           sv.fullScroll(View.FOCUS_UP);
+//           refresh();
+           vf.showPrevious();
+           LinearLayout fd = (LinearLayout)vf.getCurrentView();
            ScrollView sv = (ScrollView)fd.findViewById(R.id.ScrollView01);
            sv.fullScroll(View.FOCUS_UP);
            refresh();
-           vf.showPrevious();
+
       }
       
     private class SwipeGestureDetector 
@@ -211,7 +220,8 @@ return false;
 
     private void refresh() {
        
-    	LinearLayout fd = (LinearLayout)views.get(curr);
+//    	LinearLayout fd = (LinearLayout)views.get(curr);
+        LinearLayout fd = (LinearLayout)vf.getCurrentView();
     	
 //        webview = (WebView)fd.findViewById(R.id.webView3);
 //        webview.getSettings().setJavaScriptEnabled(true); 

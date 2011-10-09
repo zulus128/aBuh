@@ -9,25 +9,29 @@
 		<LinearLayout android:id="@+id/NewsItem"
 			android:orientation="vertical" android:paddingLeft="10px"
 			android:paddingRight="10px" android:layout_width="fill_parent"
-			android:layout_height="fill_parent">
+			android:layout_height="fill_parent"
+			android:layout_marginBottom="7px">
 			<TextView android:layout_width="wrap_content"
 				android:layout_height="wrap_content" android:text="Nyhetsrubrik"
 				android:id="@+id/NewsTitle" android:textColor="#122137"
 				android:textStyle="bold" android:textSize="21px"></TextView>
-			<TextView android:text="@+id/TextView01"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:id="@+id/NewsDate" android:textColor="#959595"
-				android:textSize="11px" android:layout_marginTop="5px"></TextView>
+					<LinearLayout android:id="@+id/LinearLayout04"
+						android:orientation="horizontal" android:layout_height="wrap_content"
+						android:layout_width="fill_parent">
 
-			<LinearLayout android:id="@+id/NewsWebLinearLayout"
-				android:layout_height="fill_parent" android:layout_width="fill_parent"
-				android:layout_marginTop="4px"></LinearLayout>
+						<ImageView android:id="@+id/tarrow" android:src="@drawable/arrow"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"
+							></ImageView>
 
-			<!-- <android.webkit.WebView android:id="@+id/webView1" android:layout_width="fill_parent" 
-				android:layout_height="fill_parent"></android.webkit.WebView> -->
+						<TextView android:layout_width="fill_parent"
+							android:layout_height="wrap_content" android:textSize="12px"
+							android:paddingLeft="3dp" android:textColor="#000000" android:id="@+id/NewsDate"></TextView>
+
+					</LinearLayout>
 
 			<TextView android:layout_width="fill_parent"
 				android:layout_height="fill_parent" android:id="@+id/tv"
+				android:layout_marginTop="5dp"
 				android:textColor="#000000" android:background="#ffffff">
 			</TextView>
 
