@@ -33,6 +33,7 @@ import android.graphics.Bitmap;
 import android.text.Html;
 import android.text.Spanned;
 import android.util.Log;
+import android.widget.Toast;
 
 public class Common {
 
@@ -116,12 +117,17 @@ public class Common {
 			fos.close();
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+
+			Toast.makeText(app_ctx, "Файл не записан " + e.toString(), Toast.LENGTH_SHORT).show();
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
+			Toast.makeText(app_ctx, "Файл не записан: " + e.toString(), Toast.LENGTH_SHORT).show();
 			e.printStackTrace();
 		}
+		
+		Toast.makeText(app_ctx, "Избранное сохранено", Toast.LENGTH_SHORT).show();
+
 	}
 	
 	public static void loadFavr() {
