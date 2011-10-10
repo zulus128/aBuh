@@ -41,17 +41,17 @@ public class Common {
 	
 	public enum item_type { IT_NONE, IT_REGULARNEWS, IT_TOPNEWS, IT_QA, IT_PODCAST, IT_BANNER };
 	
-	public static final String MENU_URL_FOR_REACH = "www.buhgalteria.ru";
-	public static final String MENU_URL = "http://www.buhgalteria.ru/rss/iphoneapp/iphonenews.php";
-	public static final String TOPMENU_URL = "http://www.buhgalteria.ru/rss/iphoneapp/iphoneday.php";
-	public static final String QAMENU_URL = "http://www.buhgalteria.ru/rss/iphoneapp/iphonefaq.php";
+//	public static final String MENU_URL_FOR_REACH = "www.buhgalteria.ru";
+	public static final String MENU_URL = "http://www.buhgalteria.ru/rss/androidapp/androidnews.php";
+	public static final String TOPMENU_URL = "http://www.buhgalteria.ru/rss/androidapp/androidday.php";
+	public static final String QAMENU_URL = "http://www.buhgalteria.ru/rss/androidapp/androidfaq.php";
 	public static final String SENDQ_URL = "http://www.buhgalteria.ru/addq/iphone.php";
-	public static final String PODCAST_URL = "http://www.buhgalteria.ru/rss/iphoneapp/iphonepodcast.php";
+	public static final String PODCAST_URL = "http://www.buhgalteria.ru/rss/androidapp/androidpodcast.php";
 
-	public static final String EMAIL_URL = "http://www.buhgalteria.ru/iphoneapp/mailget.php?email=%@";
+//	public static final String EMAIL_URL = "http://www.buhgalteria.ru/androidapp/mailget.php?email=%@";
 
-	public static final String BANNER_URL = "http://www.buhgalteria.ru/rss/iphoneapp/iphonebanner.php";
-	public static final String NOBANNER_URL = "http://www.buhgalteria.ru/rss/iphoneapp/iphonenobanner.php";
+	public static final String BANNER_URL = "http://www.buhgalteria.ru/rss/androidapp/androidbanner.php";
+//	public static final String NOBANNER_URL = "http://www.buhgalteria.ru/rss/androidapp/androidnobanner.php";
 
 	public static final String ITEM_TAG = "item";
 	public static final String TITLE_TAG = "title";
