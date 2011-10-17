@@ -30,15 +30,20 @@ android:id="@+id/NewsTitleTextView" android:lines="2"></TextView>
 <LinearLayout android:id="@+id/LinearLayout02" android:orientation="horizontal"
 android:layout_height="wrap_content" android:layout_width="fill_parent">
 
-<ImageView android:id="@+id/arrow" android:src="@drawable/arrow" android:layout_width="wrap_content" android:layout_height="wrap_content"></ImageView>
+					<ImageView android:id="@+id/arrow" android:src="@drawable/arrow"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:layout_weight="0.3" 
+						android:layout_gravity="center_vertical"
+						></ImageView>
 
-<TextView
-android:layout_width="fill_parent" 
-android:layout_height="wrap_content"
-android:textSize="12px"
-android:paddingLeft="3dp"
-android:textColor="#000000"
-android:id="@+id/NewsRubricTextView"></TextView>
+					<TextView android:layout_width="fill_parent"
+						android:layout_height="wrap_content" android:textSize="13px"
+						android:paddingLeft="3dp" android:textColor="#000000"
+						android:id="@+id/NewsRubricTextView"
+						android:layout_gravity="center_vertical"
+						android:layout_weight="0.7" 
+						android:minHeight="13px"
+						></TextView>
 </LinearLayout>
 
 </LinearLayout>
